@@ -9,4 +9,4 @@ def home():
     if current_user.is_authenticated:
         return f"olá {current_user.name}"
     else:
-        return 'não está logado'
+        return render_template('landing.html')

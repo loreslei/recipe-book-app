@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='landingpage.css') }}">
+<title>[NOME DO BAGULHO]</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Food🥨riter</h1>
+<p>Um aplicativo para salvar suas receitas em um só lugar!</p>
+<a href="/register"><button>Criar conta</button></a>
+<a href="/login"><button>Já tenho cadastro</button></a>
+{% endblock %}
