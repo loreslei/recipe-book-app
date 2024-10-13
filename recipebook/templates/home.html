@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>FoodWriter</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Olá, {{current_user.name}}</h1>
+
+<form action="/recipes/add" method="post">
+<button type="submit">teste</button>
+</form>
+
+{% endblock %}

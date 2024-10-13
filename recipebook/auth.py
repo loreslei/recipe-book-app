@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required, logout_user, current_user, login_user
 from werkzeug.security import check_password_hash, generate_password_hash
-from .init_db import db
 from .models import User
 
 bp = Blueprint('auth', __name__)    
@@ -70,7 +69,7 @@ def register():
 
     return render_template('register.html')
 
-@bp.route('/logout')
+@bp.route('/logout', strict_slashes=False)
 @login_required
 def logout():
     logout_user()

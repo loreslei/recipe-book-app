@@ -3,10 +3,10 @@ from flask_login import login_required, current_user
 
 bp = Blueprint('views', __name__)
 
-@bp.route("/")
+@bp.route("/") 
 @bp.route("/home")
 def home():
     if current_user.is_authenticated:
-        return f"olá {current_user.name}"
+        return redirect(url_for('recipes.home'))
     else:
         return render_template('landing.html')
