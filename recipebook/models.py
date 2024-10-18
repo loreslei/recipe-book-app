@@ -2,9 +2,11 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 from . import db
 
-class Likes(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'), primary_key=True)
+likes = db.Table(
+    'likes',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('recipe_id', db.Integer, db.ForeignKey('recipe.id'), primary_key=True)
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
@@ -15,7 +17,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255), nullable=False)
 
     recipes = db.relationship('Recipe', backref='user', lazy=True, passive_deletes=True)
-    liked_recipes = db.relationship('Recipe', secondary=Likes, backref='liked_by')
+    liked_recipes = db.relationship('Recipe', secondary=likes, backref='liked_by')
 
 
 class Recipe(db.Model):

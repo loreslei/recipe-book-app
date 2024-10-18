@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Adicionar Receita</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Nova Receita</h1>
+
+<form action="/recipes/add" method="POST" id="recipeform">
+    <p>Título</p>
+    <input type="text" name="title" required>
+    <p>Ingredientes</p>
+    <textarea name="ingredients" form="recipeform" required></textarea>
+    <p>Modo de fazer</p>
+    <textarea name="steps" form="recipeform" required></textarea><br><br>
+    <select name="category">
+        <option value="Sem categoria" selected>Sem categoria</option>
+        <option value="Árabe">Árabe</option>
+        <option value="Bolos">Bolos</option>
+        <option value="Churrasco">Churrasco</option>
+        <option value="Cozinha brasileira">Cozinha brasileira</option>
+        <option value="Indiana">Indiana</option>
+        <option value="Japonesa">Japonesa</option>
+        <option value="Podrão">Podrão</option>
+        <option value="Salgado">Salgado</option>
+        <option value="Saladas">Saladas</option>
+        <option value="Sobremesas">Sobremesas</option>
+        <option value="Vegano">Vegano</option>
+    </select>
+    
+    <!-- TODO: image upload -->
+    <br><br>
+    <button type="submit">Confirmar</button>
+</form>
+
+{% endblock %}

@@ -25,7 +25,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-    from .models import User, Recipe, Likes
+    from .models import User, Recipe, likes
     db.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
 

@@ -8,8 +8,10 @@
 
 <h1>Olá, {{current_user.name}}</h1>
 
-<form action="/recipes/add" method="post">
-<button type="submit">teste</button>
-</form>
+
+{% for r in recipes %}
+    <p>{{ r.title }} {{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }} - {{ r.category }}</p>
+{% endfor %}
+<a href="/recipes/add"><button>+ Nova receita</button></a>
 
 {% endblock %}
