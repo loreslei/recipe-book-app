@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from os import path
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
@@ -43,7 +43,7 @@ def create_app():
 
     @app.errorhandler(404)
     def not_found(e):
-        return '<img src="https://w.wallhaven.cc/full/eo/wallhaven-eo1z8o.png">'
+        return f'<div style="text-align: center;"><p>404</p><img width="80%" src="{url_for("static", filename="/image/404.png")}"></div>'
 
     from . import auth
     app.register_blueprint(auth.bp)
