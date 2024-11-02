@@ -16,18 +16,9 @@
     <p>Modo de fazer</p>
     <textarea name="steps" form="recipeform" required></textarea><br><br>
     <select name="category">
-        <option value="Sem categoria" selected>Sem categoria</option>
-        <option value="Árabe">Árabe</option>
-        <option value="Bolos">Bolos</option>
-        <option value="Churrasco">Churrasco</option>
-        <option value="Cozinha brasileira">Cozinha brasileira</option>
-        <option value="Indiana">Indiana</option>
-        <option value="Japonesa">Japonesa</option>
-        <option value="Podrão">Podrão</option>
-        <option value="Salgado">Salgado</option>
-        <option value="Saladas">Saladas</option>
-        <option value="Sobremesas">Sobremesas</option>
-        <option value="Vegano">Vegano</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
     </select>
     
     <!-- TODO: image upload -->

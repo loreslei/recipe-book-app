@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Editando {{ recipe.title }}</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Editar receita</h1>
+
+<form action="/recipes/update/{{ recipe.id }}" method="POST" id="recipeform">
+    <p>Título</p>
+    <input value="{{ recipe.title }}" type="text" name="title" required>
+    <p>Ingredientes</p>
+    <textarea name="ingredients" form="recipeform" required>{{ recipe.ingredients }}</textarea>
+    <p>Modo de fazer</p>
+    <textarea name="steps" form="recipeform" required>{{ recipe.steps }}</textarea><br><br>
+    <select name="category">
+        {% for category in categories %}
+            {% if recipe.category_id == category.id %}
+                <option value="{{ category.id }}" selected>{{ category.name }}</option>
+            {% else %}
+                <option value="{{ category.id }}">{{ category.name }}</option>        
+            {% endif %}
+        {% endfor %}
+    </select>
+    
+    <!-- TODO: image upload -->
+    <br><br>
+    <button type="submit">Confirmar</button>
+</form>
+
+{% endblock %}

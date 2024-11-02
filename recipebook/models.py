@@ -28,9 +28,18 @@ class Recipe(db.Model):
     title = db.Column(db.String(255), nullable=False)
     ingredients = db.Column(db.Text, nullable=False)
     steps = db.Column(db.Text, nullable=False)
-    category = db.Column(db.String(50), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id', ondelete="CASCADE"), nullable=True)
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     image_path = db.Column(db.String(255), nullable=True)
 
     def get_like_count(self):
         return self.liked_by.count()
+
+class Category(db.Model):
+    __tablename__ = 'category'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return f"<Category(id={self.id}, name='{self.name}')>"
