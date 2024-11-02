@@ -2,12 +2,13 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='landingpage.css') }}">
-<title>[NOME DO BAGULHO]</title>
+<title>FoodWriter</title>
 {% endblock %}
 
 {% block body %}
 
-<h1>Food🥨riter</h1>
+<img src="{{ url_for('static', filename='image/logo.png') }}" alt="logo">
+
 <p>Um aplicativo para salvar suas receitas em um só lugar!</p>
 <a href="/register"><button>Criar conta</button></a>
 <a href="/login"><button>Já tenho cadastro</button></a>

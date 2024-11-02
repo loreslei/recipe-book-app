@@ -74,4 +74,4 @@ def register():
 @login_required
 def logout():
     logout_user()
-    return 'logout'
+    return redirect(url_for('views.home'))

@@ -7,7 +7,7 @@
 {% block body %}
 
 <h1>Olá, {{current_user.name}}</h1>
-
+<a href="/logout">Sair</a>
 
 {% for r in recipes %}
     <p>{{ r.title }} {{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }} - {{ r.category_name }} <a href="/recipes/update/{{ r.id }}"><button>editar</button></a> <a href="/recipes/delete/{{ r.id }}"><button>remover</button></a></p>
