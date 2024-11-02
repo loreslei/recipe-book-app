@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, abort
 from flask_login import login_required, current_user
 from . import db
 from .models import Recipe, User, Category
@@ -14,6 +14,7 @@ def home():
     query = (
         db.session.query(
             Recipe.id,
+            Recipe.user_id,
             Recipe.title,
             Recipe.ingredients,
             Recipe.steps,
@@ -21,6 +22,7 @@ def home():
             Recipe.image_path,
             Category.name.label("category_name")
         )
+        .filter_by(user_id=current_user.id)
         .join(Category, Recipe.category_id == Category.id)
     )
     recipes = query.all()
@@ -52,13 +54,28 @@ def add():
 def edit(recipe_id):
     recipe = Recipe.query.filter_by(id=recipe_id).first()
     categories = Category.query.all()
+    if recipe.user_id != current_user.id:
+            return abort(404)
     if request.method == 'GET':
         return render_template('edit_recipe.html', recipe=recipe, categories=categories)
     elif request.method == 'POST':
+        
         recipe.title = request.form.get('title')
         recipe.ingredients = request.form.get('ingredients')
         recipe.steps = request.form.get('steps')
         recipe.category_id = request.form.get('category')
 
+        db.session.commit()
+        return redirect(url_for('recipes.home'))
+
+@bp.route('/delete/<int:recipe_id>', methods=['GET'])
+@login_required
+def delete(recipe_id):
+    recipe = Recipe.query.filter_by(id=recipe_id).first()
+    if recipe.user_id != current_user.id:
+        return abort(404)
+    if request.method == 'GET':
+
+        db.session.delete(recipe)
         db.session.commit()
         return redirect(url_for('recipes.home'))
