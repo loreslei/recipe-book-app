@@ -6,11 +6,7 @@ import datetime
 
 bp = Blueprint('recipes', __name__, url_prefix='/recipes')
 
-
-@bp.route('/', methods=['GET'])
-@login_required
-def home():
-
+def get_recipes_with_category():
     query = (
         db.session.query(
             Recipe.id,
@@ -26,8 +22,44 @@ def home():
         .join(Category, Recipe.category_id == Category.id)
     )
     recipes = query.all()
+    return recipes
+
+def get_recipe_by_id(recipe_id):
+    query = (
+        db.session.query(
+            Recipe.id,
+            Recipe.user_id,
+            Recipe.title,
+            Recipe.ingredients,
+            Recipe.steps,
+            Recipe.date_created,
+            Recipe.image_path,
+            Category.name.label("category_name")
+        )
+        .filter_by(id=recipe_id)
+        .join(Category, Recipe.category_id == Category.id)
+    )
+    recipe = query.first()
+    return recipe
+
+@bp.route('/', methods=['GET'])
+@login_required
+def home():
+
+    recipes = get_recipes_with_category()
     
     return render_template('home.html', recipes=recipes)
+
+
+@bp.route('/view/<int:recipe_id>', methods=['GET'])
+# TODO: if user is logged in add some stuff
+def view(recipe_id):
+    recipe = get_recipe_by_id(recipe_id)
+
+    if recipe == None:
+        return abort(404)
+    return render_template('view_recipe.html', recipe=recipe)
+
 
 @bp.route('/add', methods=['GET', 'POST'])
 @login_required
