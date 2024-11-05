@@ -1,33 +1,69 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+    <title>Editando {{ recipe.title }}</title>
+</head>
+<body>
 
-{% block head %}
-<title>Editando {{ recipe.title }}</title>
-{% endblock %}
+    <!-- Navbar -->
+    {% include "search_component.html" %}
 
-{% block body %}
+    <!-- Edit Recipe Form -->
+    <div class="container mt-5 pt-5">
+        <div class="box form-box">
+            <header>Editar Receita</header>
+            <form action="/recipes/update/{{ recipe.id }}" method="POST" id="recipeform">
+                
+                <!-- Título -->
+                <div class="field input">
+                    <label for="title">Título*</label>
+                    <input type="text" name="title" id="title" value="{{ recipe.title }}" required>
+                </div>
 
-<h1>Editar receita</h1>
+                <!-- Ingredientes -->
+                <div class="field input">
+                    <label for="ingredients">Ingredientes*</label>
+                    <textarea name="ingredients" id="ingredients" form="recipeform" required>{{ recipe.ingredients }}</textarea>
+                </div>
+                
+                <!-- Modo de Preparo -->
+                <div class="field input">
+                    <label for="steps">Modo de Preparo*</label>
+                    <textarea name="steps" id="steps" form="recipeform" required>{{ recipe.steps }}</textarea>
+                </div>
 
-<form action="/recipes/update/{{ recipe.id }}" method="POST" id="recipeform">
-    <p>Título</p>
-    <input value="{{ recipe.title }}" type="text" name="title" required>
-    <p>Ingredientes</p>
-    <textarea name="ingredients" form="recipeform" required>{{ recipe.ingredients }}</textarea>
-    <p>Modo de fazer</p>
-    <textarea name="steps" form="recipeform" required>{{ recipe.steps }}</textarea><br><br>
-    <select name="category">
-        {% for category in categories %}
-            {% if recipe.category_id == category.id %}
-                <option value="{{ category.id }}" selected>{{ category.name }}</option>
-            {% else %}
-                <option value="{{ category.id }}">{{ category.name }}</option>        
-            {% endif %}
-        {% endfor %}
-    </select>
-    
-    <!-- TODO: image upload -->
-    <br><br>
-    <button type="submit">Confirmar</button>
-</form>
+                <!-- Categoria -->
+                <div class="field input">
+                    <label for="category">Categoria*</label>
+                    <select name="category" id="category" required>
+                        {% for category in categories %}
+                            {% if recipe.category_id == category.id %}
+                                <option value="{{ category.id }}" selected>{{ category.name }}</option>
+                            {% else %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
 
-{% endblock %}
+                <!-- TODO: image upload -->
+
+                <!-- Botão de Submissão -->
+                <div class="input-group pt-3 mb-2 justify-content-center">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6">
+                        <span class="lead fw-bold text-uppercase">Confirmar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

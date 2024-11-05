@@ -1,137 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Main-Usuário</title>
-  <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main-usuario.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodWriter</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-usuario.css') }}">
 </head>
-
 <body>
 
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+    <!-- FIM Navbar -->
 
-  <!-- navbar -->
-  <nav id="Navbar" class="navbar fixed-top">
-    <div class="container-fluid">
-      <a id="Logo" class="navbar-brand">Food🥨riter</a>
-      <form action="/recipes/search" method="GET" class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Buscar Receitas..." aria-label="Buscar Receitas..." name="keyword">
-        <button class="btn btn-outline-light" type="submit">Pesquisar</button>
-      </form>
-    </div>
-  </nav>
-  <!-- FIM navbar -->
-
-  <div id="Alinhar">
-    <a id="AddReceita" class="btn fw-bold btn-lg" href="/logout">SAIR</a>
-  </div>
-
-  <!-- Olá, usuário -->
-  <div id="User">
-    <img id="ProfileImage" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="">
-    </span>
-    <span class="lead display-6">Olá, <i class="fw-bold">{{ current_user.name }}</i></span>
-
-
-  </div>
-
-
-  <!-- FIM Olá, usuário -->
-
-  <!-- Cabeçalho -->
-  <h1 id="Header-Cadastro" class="display-4 text-center fw-bold">Minhas Receitas</h1>
-  <!-- FIM Cabeçalho -->
-
-  <!-- Botão para adicionar receita -->
-
-  <div id="PosicaoTela">
-    <div id="Container" class="card">
-      <div id="Centraliza">
-        <div class="card-body">
-          <div id="Alinha">
-            <a href="add"><button id="AddReceita" class="btn fw-bold btn-lg">Adicionar Receita</button></a>
-          </div>
-          <p class="text-center">
-            ou <span class="fw-bold" id="Salve">salve</span> as receitas de
-            <br>outras pessoas
-          </p>
-        </div>
-      </div>
-
+    <div id="Alinhar">
+        <a id="AddReceita" class="btn fw-bold btn-lg" href="/logout">SAIR</a>
     </div>
 
-  </div>
+    <!-- Saudação ao Usuário -->
+    <div id="User">
+        <img id="ProfileImage" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="Imagem do Usuário">
+        <span class="lead display-6">Olá, <i class="fw-bold">{{current_user.name}}</i></span>
+    </div>
 
+    <!-- Cabeçalho -->
+    <h1 id="Header-Cadastro" class="display-4 text-center fw-bold">Minhas Receitas</h1>
 
-  <!-- FIM Botão para adicionar receita -->
+    
 
-  <!-- Posição da tela -->
-
-  <div id="Centralizar">
-
-
-
-    <div id="PosicaoTela" style="display: flex;">
-    <!-- INICIO card 1 -->
-    {% for r in recipes %}
-      <div class="card floating-card" style="width: 14.5rem; height: 28.5rem; cursor: pointer;" onclick="window.open('view/{{ r.id }}')">
-        <div id="ContainerImg">
-          <img src="{{ url_for('static', filename='images/boloCenoura.png') }}" alt="...">
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title fw-bold">{{ r.title }}</h5>
-          <div class="classPosi">
-            <p id="CategoriaComida">{{ r.category_name }}</p>
-          </div>
-          <p id="Data">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
-
-          <div class="classPosi">
-
-            <a href="delete/{{ r.id }}" style="all: unset;">
-              <div class="Excluir">
-                <span class="icon-box">
-                  <i id="Trash" class='bx bx-trash h4'></i>
-                </span>
-                <p id="Excluir" class="card-text fw-bold">EXCLUIR</p>
-              </div>
-            </a>
-
-            <a href="update/{{ r.id }}" style="all: unset;">
-            <div class="Editar">
-              <span class="icon-box">
-                <i id="Trash" class='bx bx-edit h4'></i>
-              </span>
-              <p id="Excluir" class="card-text fw-bold">EDITAR</p>
+    <!-- Botão para adicionar nova receita -->
+    <div id="Centralizar">
+        <div id="Container" class="card">
+            <div id="Centraliza">
+                <div class="card-body">
+                    <div id="Alinha">
+                        <a href="/recipes/add">
+                            <button id="AddReceita" class="btn fw-bold btn-lg">Adicionar Receita</button>
+                        </a>
+                    </div>
+                    <p class="text-center">ou <span class="fw-bold" id="Salve">salve</span> as receitas de
+                        <br> outras pessoas</p>
+                </div>
             </div>
-          </a>
-
-          </div>
-
-
         </div>
-      </div>
-      {% endfor %}
-      <!-- FIM card 1-->
+    </div>
 
+    <div id="Centralizar">
 
+    <!-- Lista de Receitas -->
+    <div id="PosicaoTela">
+        {% for r in recipes %}
+        <div class="card mb-3 floating-card" style="width: 14.5rem; height: 28.5rem;">
+            <div id="ContainerImg">
+                <img src="{{ url_for('static', filename='images/boloCenoura.png') }}" style="cursor: pointer;" onclick="window.open('view/{{ r.id }}')" alt="Imagem da Receita">
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title fw-bold text-capitalize" style="cursor: pointer;" onclick="window.open('view/{{ r.id }}')">{{ r.title }}</h5>
+                <div class="classPosi">
+                    <p id="CategoriaComida">{{ r.category_name }}</p>
+                </div>
+                <p id="Data">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
 
-
+                <div class="classPosi">
+                    <!-- Botão Remover -->
+                    <div class="Excluir">
+                        <a href="/recipes/delete/{{ r.id }}">
+                            <span class="icon-box">
+                                <i id="Trash" class='bx bx-trash h4'></i>
+                            </span>
+                            <p id="Excluir" class="card-text fw-bold">EXCLUIR</p>
+                        </a>
+                    </div>
+                    
+                    <!-- Botão Editar -->
+                    <div class="Editar">
+                        <a href="/recipes/update/{{ r.id }}">
+                            <span class="icon-box">
+                                <i id="Trash" class='bx bx-edit h4'></i>
+                            </span>
+                            <p id="Excluir" class="card-text fw-bold">EDITAR</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
     </div>
 
-    <!-- FIM Posição da tela -->
-
-  </div>
-
-
-
-
-  <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
-
 </html>

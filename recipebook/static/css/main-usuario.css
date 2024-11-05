@@ -4,9 +4,8 @@
     border-radius: 60px;
 }
 
-.Excluir a{
-    text-decoration:none;
-    color: #484D50;;
+.Excluir a, .Editar a {
+    all: unset;
 }
 
 #Container{
@@ -140,22 +139,33 @@
     height: 12rem;
 }
 
+.floating-card:hover {
+    transform: translateY(-5px);
+    transition: all 0.5s ease;
+}
+
+.floating-card:not(:hover) {
+    transform: translateY(5px);
+    transition: all 0.5s ease;
+}
+
 .Excluir, .Editar {
     margin: auto;
     padding: 10px;
     width: fit-content;
     border-radius: 10px;
+    color: #484D50 !important;
     transition: all 0.2s linear;
 }
 
 .Excluir:hover {
     background-color: #dc3545;
-    color: #fafafa;
+    color: #fafafa !important;
     cursor: pointer;
 }
 
 .Editar:hover {
     background-color: #675af8;
-    color: #fafafa;
+    color: #fafafa !important;
     cursor: pointer;
 }

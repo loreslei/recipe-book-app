@@ -60,7 +60,7 @@ def view(recipe_id):
 
     if recipe == None:
         return abort(404)
-    return render_template('view_recipe.html', recipe=recipe)
+    return render_template('comida.html', recipe=recipe)
 
 
 @bp.route('/add', methods=['GET', 'POST'])
