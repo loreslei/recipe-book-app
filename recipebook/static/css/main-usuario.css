@@ -1,0 +1,161 @@
+#AddReceita{
+    background-color: #675af8;
+    color: #fdfdfd;
+    border-radius: 60px;
+}
+
+.Excluir a{
+    text-decoration:none;
+    color: #484D50;;
+}
+
+#Container{
+    width: 45%;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+
+}
+
+#ProfileImage{
+    border-radius: 50%;
+    width: 7%;
+    height: 7%;
+    margin-right: 1rem;
+    visibility: hidden;
+}
+
+@media(max-width:565.98px){
+    #Container{
+        width: 80%;
+    }
+}
+
+ 
+
+#Alinha{
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 2rem  0;
+}
+
+
+#Header-Cadastro{
+    margin-bottom: 4rem;
+}
+
+#User{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#Trash{
+    font-size: 28px;
+}
+
+#Data{
+    color: #999999;
+}
+
+
+#Alinhar{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 8rem;
+    margin-right: 4rem;
+    margin-bottom: 4rem;
+}
+
+#Alinhar a{
+    padding: 1rem;
+    width: 8rem;
+}
+
+#CategoriaComida{
+    background-color: #675af8;
+    color: #fdfdfd;
+    border-radius: 40px;
+    padding: .4rem;
+    width: 80%;
+}
+
+.classPosi{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#PosicaoTela{
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+#Centralizar{
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width:1200.98px){
+    #PosicaoTela{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+.card{
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 5rem;
+}
+
+#Salve{
+    color: #675af8;
+    text-decoration: underline;
+}
+
+#ContainerImg{
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card img{
+    border-radius: 20px 20px 20px 20px;
+    width: 85%;
+    object-fit: cover; 
+    background-position: center;
+    height: 12rem;
+}
+
+.Excluir, .Editar {
+    margin: auto;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.Excluir:hover {
+    background-color: #dc3545;
+    color: #fafafa;
+    cursor: pointer;
+}
+
+.Editar:hover {
+    background-color: #675af8;
+    color: #fafafa;
+    cursor: pointer;
+}

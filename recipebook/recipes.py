@@ -34,9 +34,11 @@ def get_recipe_by_id(recipe_id):
             Recipe.steps,
             Recipe.date_created,
             Recipe.image_path,
-            Category.name.label("category_name")
+            Category.name.label("category_name"),
+            User.name.label("author")
         )
         .filter_by(id=recipe_id)
+        .join(User, User.id == Recipe.user_id)
         .join(Category, Recipe.category_id == Category.id)
     )
     recipe = query.first()
@@ -111,3 +113,27 @@ def delete(recipe_id):
         db.session.delete(recipe)
         db.session.commit()
         return redirect(url_for('recipes.home'))
+
+
+@bp.route('/search', methods=['GET'])
+def search():
+    keyword = request.args.get('keyword')
+    print(keyword)
+    query = (
+        db.session.query(
+            Recipe.id,
+            Recipe.user_id,
+            Recipe.title,
+            Recipe.ingredients,
+            Recipe.steps,
+            Recipe.date_created,
+            Recipe.image_path,
+            Category.name.label("category_name"),
+            User.name.label("author")
+        )
+        .filter(Recipe.title.like(f"{keyword}%"))
+        .join(User, User.id == Recipe.user_id)
+        .join(Category, Recipe.category_id == Category.id)
+    )
+    
+    return render_template('search.html', recipes=query.all())

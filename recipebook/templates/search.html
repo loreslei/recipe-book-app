@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>FoodWriter</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Pesquisa por '{{ request.args.get('keyword') }}'</h1>
+
+<ul>
+{% for r in recipes %}
+    <li><a href="view/{{ r.id }}">{{ r.title }} {{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }} - {{ r.category_name }}</a> <a href="/recipes/update/{{ r.id }}"> | por {{ r.author }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
