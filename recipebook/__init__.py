@@ -17,12 +17,15 @@ metadata = MetaData(naming_convention=convention)
 
 db = SQLAlchemy(metadata=metadata)
 migrate = Migrate(render_as_batch=True)
+UPLOAD_FOLDER = "/uploads"
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'dev'
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///database.db"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
     from .models import User, Recipe, likes

@@ -15,7 +15,11 @@
     <div class="container mt-5 pt-5">
         <div class="box form-box">
             <header>Nova Receita</header>
-            <form action="/recipes/add" method="POST" id="recipeform">
+            <form action="/recipes/add" method="POST" id="recipeform" enctype="multipart/form-data">
+                <div class="field input">
+                    <label for="recipe_image">Imagem</label>
+                    <input type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
+                </div>
                 <div class="field input">
                     <label for="title">Título*</label>
                     <input type="text" name="title" id="title" required>

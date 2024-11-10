@@ -55,7 +55,11 @@
         {% for r in recipes %}
         <div class="card mb-3 floating-card" style="width: 14.5rem; height: 28.5rem;">
             <div id="ContainerImg">
-                <img src="{{ url_for('static', filename='images/boloCenoura.png') }}" style="cursor: pointer;" onclick="window.open('view/{{ r.id }}')" alt="Imagem da Receita">
+                {% if r.image_path %}
+                <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + r.image_path) }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.open('view/{{r.id}}')">
+                {% else %}
+                    <img id="ImagemComida" src="{{ url_for('static', filename='images/default_food.png') }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.open('view/{{r.id}}')">
+                {% endif %}
             </div>
             <div class="card-body text-center">
                 <h5 class="card-title fw-bold text-capitalize" style="cursor: pointer;" onclick="window.open('view/{{ r.id }}')">{{ r.title }}</h5>
@@ -66,24 +70,24 @@
 
                 <div class="classPosi">
                     <!-- Botão Remover -->
+                    <a style="all:unset;" href="/recipes/delete/{{ r.id }}">
                     <div class="Excluir">
-                        <a href="/recipes/delete/{{ r.id }}">
                             <span class="icon-box">
                                 <i id="Trash" class='bx bx-trash h4'></i>
                             </span>
                             <p id="Excluir" class="card-text fw-bold">EXCLUIR</p>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                     
                     <!-- Botão Editar -->
+                    <a style="all:unset;" href="/recipes/update/{{ r.id }}">
                     <div class="Editar">
-                        <a href="/recipes/update/{{ r.id }}">
                             <span class="icon-box">
                                 <i id="Trash" class='bx bx-edit h4'></i>
                             </span>
                             <p id="Excluir" class="card-text fw-bold">EDITAR</p>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

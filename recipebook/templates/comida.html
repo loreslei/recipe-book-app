@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/comida.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=skillet" />
   </head>
   <body>
     <nav id="Navbar" class="navbar fixed-top">
@@ -24,7 +25,9 @@
     <h1 id="Header" class="display-4 text-center fw-bold text-capitalize">{{ recipe.title }}</h1>
 
     <div class="posicaoImagem">
-        <img id="ImagemComida" src="{{ url_for('static', filename='images/boloCenoura.png') }}" alt="Imagem da Comida">
+      {% if recipe.image_path %}
+        <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + recipe.image_path) }}" alt="Imagem da Comida">
+      {% endif %}
     </div>
 
     <p id="Autor" class="display-6 text-center">por <i>{{ recipe.author }}</i></p>
