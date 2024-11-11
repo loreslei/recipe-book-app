@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Receita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/comida.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=skillet" />
+  </head>
+  <body>
+
+    
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+    <!-- FIM Navbar -->
+
+
+
+    <h1 id="Header" class="display-4 text-center fw-bold text-capitalize">{{ recipe.title }}</h1>
+
+    <div class="posicaoImagem">
+      {% if recipe.image_path %}
+        <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + recipe.image_path) }}" alt="Imagem da Comida">
+      {% endif %}
+    </div>
+
+    <p id="Autor" class="display-6 text-center">por <i>{{ recipe.author }}</i></p>
+
+    <p id="Data" class="lead display-6 text-center">{{ recipe.date_created.day }}/{{ recipe.date_created.month }}/{{ recipe.date_created.year }}</p>
+
+    <div id="FundoCat">
+      <p id="Categoria" class="lead pt-3 pb-3 h1 text-center">{{ recipe.category_name }}</p>
+    </div>
+
+    <h1 id="Ingredientes" class="text-center fw-bold">Ingredientes:</h1>
+
+    <div id="Socorro">
+      <ul>
+        {% for i in recipe.ingredients.split('\n') %}
+        <li class="lead text-capitalize">
+          {{ i }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <h1 id="ModoPreparo" class="text-center fw-bold">Modo de Preparo:</h1>
+    <div id="Socorro">
+      <ol>
+        {% for i in recipe.steps.split('\n') %}
+        <li class="lead text-capitalize">
+          {{ i }}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    
+    
+   
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>
