@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+    <title>Editando {{ recipe.title }}</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+
+    <!-- Edit Recipe Form -->
+    <div class="container mt-5 pt-5">
+        <div class="box form-box">
+            <header>Editar Receita</header>
+            <form action="/recipes/update/{{ recipe.id }}" method="POST" id="recipeform" enctype="multipart/form-data">
+                <div class="field input">
+                    {% if recipe.image_path %}
+                        <img src="{{ url_for('static', filename='uploads/' + recipe.image_path) }}" alt="Imagem da receita">
+                    {% endif %}
+                    <label for="recipe_image">Imagem</label>
+                    <input type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
+                </div>
+                <!-- Título -->
+                <div class="field input">
+                    <label for="title">Título*</label>
+                    <input type="text" name="title" id="title" value="{{ recipe.title }}" required>
+                </div>
+
+                <!-- Ingredientes -->
+                <div class="field input">
+                    <label for="ingredients">Ingredientes*</label>
+                    <textarea name="ingredients" id="ingredients" form="recipeform" required>{{ recipe.ingredients }}</textarea>
+                </div>
+                
+                <!-- Modo de Preparo -->
+                <div class="field input">
+                    <label for="steps">Modo de Preparo*</label>
+                    <textarea name="steps" id="steps" form="recipeform" required>{{ recipe.steps }}</textarea>
+                </div>
+
+                <!-- Categoria -->
+                <div class="field input">
+                    <label for="category">Categoria*</label>
+                    <select name="category" id="category" required>
+                        {% for category in categories %}
+                            {% if recipe.category_id == category.id %}
+                                <option value="{{ category.id }}" selected>{{ category.name }}</option>
+                            {% else %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- TODO: image upload -->
+
+                <!-- Botão de Submissão -->
+                <div class="input-group pt-3 mb-2 justify-content-center">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6">
+                        <span class="lead fw-bold text-uppercase">Confirmar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

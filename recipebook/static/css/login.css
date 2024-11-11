@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #ececec;
+    margin: 0;
+    padding: 0;
+    background-color: #FDFDFD;
+    font-family: "Poppins", sans-serif;
+    color: #484D50;
+}
+/*------------ navegation bar ------------*/
+#Navbar{
+    background-color: #675af8;
+}
+
+#Logo{
+    color: #FDFDFD;
+}
+
+/*------------ Login container ------------*/
+
+.box-area{
+    width: 930px;
+}
+
+/*------------ Right box ------------*/
+
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+
+/*------------ Custom Placeholder ------------*/
+
+::placeholder{
+    font-size: 16px;
+}
+
+.rounded-4{
+    border-radius: 20px;
+}
+.rounded-5{
+    border-radius: 30px;
+}
+
+
+/*------------ Login Button ------------*/
+
+#LoginBtn{
+    background: linear-gradient(90deg,#675af8,#FAA7E0);
+    border-radius: 40px;
+    border: none;
+    color: #fdfdfd;
+}
+
+/*------------ Linha Login ------------*/
+
+#Linha{
+    width: 50%;
+    height: 0.2rem;
+    background: linear-gradient(90deg,#675af8,#FAA7E0);
+}
+
+/*------------ Formatação Texto ------------*/
+
+#Texto{
+    color: #FDFDFD;
+}
