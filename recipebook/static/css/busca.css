@@ -1,0 +1,87 @@
+#ImageDiv img{
+    width: 20rem;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 15px;
+    background-position: center;
+}
+
+#ImageDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ContainerIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#Cards{
+    padding: 1rem;
+    margin-top: 4rem;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+}
+
+
+#ContainerCat{
+    display: flex;
+    justify-content: center;
+}
+
+
+#PosicaoTela{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;   
+}
+
+
+#TituloPag{
+    margin-top: 8rem;
+}
+
+#Titulo{
+    color: #484D50;
+}
+
+#Categoria{
+    background-color: #675af8;
+    border-radius: 40px;
+    width: fit-content;
+    color: #fdfdfd;
+    padding: .2rem 1.2rem .2rem 1.2rem;
+}
+
+#Icon{
+    font-size: 28px;
+    color: #484D50;
+}
+
+
+.floating-card:hover {
+    transform: translateY(-5px);
+    transition: all 0.5s ease;
+}
+
+.floating-card:not(:hover) {
+    transform: translateY(5px);
+    transition: all 0.5s ease;
+}
+
+@media(max-width:767.98px){
+
+    .card-body{
+        text-align: center;
+    }
+  
+
+    #Cards{
+        width: 50%;
+    }
+}

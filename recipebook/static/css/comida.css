@@ -4,7 +4,9 @@
     height: 30rem;
     border-radius: 20px;
     box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
-    margin-bottom: 6rem;
+    margin-bottom: 6rem;   
+    object-fit: cover;  
+    background-position: center;
 }
 
 #Autor, #Categoria, #Ingredientes, #ModoPreparo{
