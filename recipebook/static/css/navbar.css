@@ -10,13 +10,94 @@ body{
     color: #484D50;
 }
 
+#OptionsMenu{
+    margin-right: 2rem;
+}
+
 #Navbar{
     background-color: #675af8;
 }
 
+.animated{
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+
+}
+
+.animated:hover{
+    background-color: #fff4;
+}
+
+
+
+.hide{
+    visibility: hidden;
+}
+
 #Logo{
     color: #FDFDFD;
+    margin-left: 2rem;
 }
+
+#Input input{
+    border: none;
+    outline: none;
+    color: #777777;
+    margin-left: -8rem;
+    background-color: transparent;
+}
+
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+input[type="search"]::-ms-clear {
+    display: none;
+    height: 0;
+    width : 0;
+}
+
+input[type="search"]::-ms-reveal {
+    display: none;
+    height: 0;
+    width : 0;
+
+}
+
+
+#PosicaoTela{
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+#Input button{
+    border: none;
+    background-color: transparent;
+}
+
+#Input i{
+    margin-top: .4rem;
+    margin-right: -15rem;
+    color: #777777;
+}
+
+#Input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 26rem;
+    border: none;
+    border-radius: 60px;
+}
+
 
 
 #Header{
@@ -24,12 +105,71 @@ body{
     padding-bottom: 4rem;
 }
 
-@media(max-width:565.98px) {
+@media(max-width:755.98px) {
     #Header{
         padding-top: 8rem;
         padding-bottom: 2rem;
     }
+
+    #Input{
+        width: 18rem;
+    }
+
+    #Input input{
+        width: 9rem;
+        margin-left: -5rem;
+    }
+
+    #Input i{
+        margin-right: -10rem;
+    }
+
+    #Logo{
+        margin: .5rem;
+    }
 }
+
+
+@media(max-width:534.98px) {
+
+    #Input{
+        width: 14rem;
+    }
+
+    #Input input{
+        width: 4rem;
+    }
+
+    #Logo{
+        margin: .5rem;
+    }
+
+
+}
+
+@media(max-width:400.98px) {
+
+    #Input{
+        width: 10rem;
+    }
+
+    #Input input{
+        width: 4rem;
+        margin-left: .1rem;
+    }
+
+    #Input i{
+        margin-right: .2rem;
+    }
+
+
+    #Logo{
+        margin: .5rem;
+    }
+
+
+}
+
 
 
 
