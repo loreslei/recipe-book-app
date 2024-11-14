@@ -9,6 +9,15 @@ body{
     font-family: "Poppins", sans-serif;
     color: #484D50;
 }
+
+.colorized{
+    transition: all 0.5s linear;
+}
+
+.colorized:hover {
+    background: linear-gradient(90deg,#675af8d0, #faa7e0da) !important;
+}
+
 /*------------ navegation bar ------------*/
 #Navbar{
     background-color: #675af8;
