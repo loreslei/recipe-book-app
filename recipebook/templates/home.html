@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodWriter</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
@@ -16,9 +17,10 @@
     {% include "search_component.html" %}
     <!-- FIM Navbar -->
 
-    <div id="Alinhar">
+    <!-- Não precisa mais <div id="Alinhar">
         <a id="AddReceita" class="btn fw-bold btn-lg" href="/logout">SAIR</a>
     </div>
+    -->
 
     <!-- Saudação ao Usuário -->
     <div id="User">
@@ -27,18 +29,18 @@
     </div>
 
     <!-- Cabeçalho -->
-    <h1 id="Header-Cadastro" class="display-4 text-center fw-bold">Minhas Receitas</h1>
+    <h1 id="Header-Cadastro" class="display-4 text-center fw-bold">Minhas Receitas 🍳</h1>
 
     
 
     <!-- Botão para adicionar nova receita -->
     <div id="Centralizar">
-        <div id="Container" class="card">
+        <div id="Container" class="card floating-card">
             <div id="Centraliza">
                 <div class="card-body">
                     <div id="Alinha">
                         <a href="/recipes/add">
-                            <button id="AddReceita" class="btn fw-bold btn-lg">Adicionar Receita</button>
+                            <button id="AddReceita" class="btn fw-bold btn-lg floating-card">Adicionar Receita</button>
                         </a>
                     </div>
                     <p class="text-center">ou <span class="fw-bold" id="Salve">salve</span> as receitas de
@@ -56,13 +58,13 @@
         <div class="card mb-3 floating-card" style="width: 14.5rem; height: 28.5rem;">
             <div id="ContainerImg">
                 {% if r.image_path %}
-                <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + r.image_path) }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.open('view/{{r.id}}')">
+                <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + r.image_path) }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'">
                 {% else %}
-                    <img id="ImagemComida" src="{{ url_for('static', filename='images/default_food.png') }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.open('view/{{r.id}}')">
+                    <img id="ImagemComida" src="{{ url_for('static', filename='images/default_food.png') }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'">
                 {% endif %}
             </div>
             <div class="card-body text-center">
-                <h5 class="card-title fw-bold text-capitalize text-truncate" style="cursor: pointer;" onclick="window.open('view/{{ r.id }}')">{{ r.title }}</h5>
+                <h5 class="card-title fw-bold text-capitalize text-truncate" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'">{{ r.title }}</h5>
                 <div class="classPosi">
                     <p id="CategoriaComida">{{ r.category_name }}</p>
                 </div>

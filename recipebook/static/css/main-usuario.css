@@ -23,7 +23,6 @@
     width: 7%;
     height: 7%;
     margin-right: 1rem;
-    visibility: hidden;
 }
 
 @media(max-width:565.98px){
@@ -46,7 +45,7 @@
 }
 
 #User{
-    margin-top: 4rem;
+    margin-top: 8rem;
     margin-bottom: 2rem;
     margin-left: 2rem;
     display: flex;
@@ -149,7 +148,7 @@
     transition: all 0.5s ease;
 }
 
-.Excluir, .Editar {
+.Excluir, .Editar, .Salvar {
     margin: auto;
     padding: 10px;
     width: fit-content;
@@ -164,7 +163,7 @@
     cursor: pointer;
 }
 
-.Editar:hover {
+.Editar:hover, .Salvar:hover{
     background-color: #675af8;
     color: #fafafa !important;
     cursor: pointer;

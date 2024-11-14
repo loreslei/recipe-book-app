@@ -60,7 +60,23 @@
 
 #Icon{
     font-size: 28px;
-    color: #484D50;
+}
+
+
+
+.icons{
+    margin: auto;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    color: #484D50 !important;
+    transition: all 0.2s linear;
+}
+
+.icons:hover{
+    background-color: #675af8;
+    color: #fafafa !important;
+    cursor: pointer;
 }
 
 
