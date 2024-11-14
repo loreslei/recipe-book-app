@@ -20,12 +20,12 @@
         <div class="box form-box">
             <header>Editar Receita</header>
             <form action="/recipes/update/{{ recipe.id }}" method="POST" id="recipeform" enctype="multipart/form-data">
-                <div class="field input">
+                <div id="AlinhadorImagem" class="field input">
                     {% if recipe.image_path %}
-                        <img src="{{ url_for('static', filename='uploads/' + recipe.image_path) }}" alt="Imagem da receita">
+                        <img id="EditarReceita" src="{{ url_for('static', filename='uploads/' + recipe.image_path) }}" alt="Imagem da receita">
                     {% endif %}
-                    <label for="recipe_image">Imagem</label>
-                    <input type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
+                    <label class="custom-file-upload colorized" for="recipe_image">Clique aqui e faça o upload de uma imagem</label>
+                    <input class="file-upload" type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
                 </div>
                 <!-- Título -->
                 <div class="field input">
@@ -63,7 +63,7 @@
 
                 <!-- Botão de Submissão -->
                 <div class="input-group pt-3 mb-2 justify-content-center">
-                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6 colorized">
                         <span class="lead fw-bold text-uppercase">Confirmar</span>
                     </button>
                 </div>

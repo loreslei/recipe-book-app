@@ -18,8 +18,8 @@
             <header>Nova Receita</header>
             <form action="/recipes/add" method="POST" id="recipeform" enctype="multipart/form-data">
                 <div class="field input">
-                    <label for="recipe_image">Imagem</label>
-                    <input type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
+                    <label class="custom-file-upload colorized" for="recipe_image">Clique aqui e faça o upload de uma imagem</label>
+                    <input class="file-upload" type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
                 </div>
                 <div class="field input">
                     <label for="title">Título*</label>
@@ -48,7 +48,7 @@
                 <!-- TODO: image upload -->
 
                 <div class="input-group pt-3 mb-2 justify-content-center">
-                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6 colorized">
                         <span class="lead fw-bold text-uppercase">Criar</span>
                     </button>
                 </div>

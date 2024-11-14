@@ -5,6 +5,47 @@
     min-height: 90vh;
 }
 
+.file-upload {
+    display: none;
+}
+
+.colorized{
+    transition: all 0.5s linear;
+}
+
+.colorized:hover {
+    background: linear-gradient(90deg,#675af8d0, #faa7e0da) !important;
+}
+
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 20px;
+    color: #fff;
+    background: linear-gradient(90deg,#675af8, #FAA7E0);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+#EditarReceita{
+    width: 100%;
+    aspect-ratio: 16/9;
+    height: 10rem;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 1.2rem;
+    object-fit: cover;
+    background-position: center;
+}
+
+#AlinhadorImagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .box {
     background: #fdfdfd;
     display: flex;
