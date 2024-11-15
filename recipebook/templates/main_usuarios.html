@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Main-@user</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-usuario.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+
+
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+    <!-- FIM Navbar -->
+
+
+
+ 
+    <!-- Cabeçalho -->
+    <h1 style="margin: 10rem 0 6rem 0" id="Header-Cadastro" class="display-4 text-center fw-bold">Receitas de <i class="display-4">@user</i></h1>
+    <!-- FIM Cabeçalho -->
+
+
+
+    <div id="Centralizar">
+
+      <!-- Lista de Receitas -->
+      <div id="PosicaoTela">
+          {% for r in recipes %}
+          <div class="card mb-3 floating-card" style="width: 14.5rem; height: 28.5rem;">
+              <div id="ContainerImg">
+                  {% if r.image_path %}
+                  <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + r.image_path) }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.open('view/{{r.id}}')">
+                  {% else %}
+                      <img id="ImagemComida" src="{{ url_for('static', filename='images/default_food.png') }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.open('view/{{r.id}}')">
+                  {% endif %}
+              </div>
+              <div class="card-body text-center">
+                  <h5 class="card-title fw-bold text-capitalize text-truncate" style="cursor: pointer;" onclick="window.open('view/{{ r.id }}')">{{ r.title }}</h5>
+                  <div class="classPosi">
+                      <p id="CategoriaComida">{{ r.category_name }}</p>
+                  </div>
+                  <p id="Data">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
+  
+                  <div class="classPosi">
+                      <!-- Botão Salvar -->
+                      <a style="all:unset;" href="...">
+                      <div class="Salvar">
+                              <span class="icon-box">
+                                  <i id="Salvar" class='bx bxs-save h4'></i>
+                              </span>
+                              <p id="Salvar" class="card-text fw-bold">SALVAR</p>
+                          </div>
+                      </a>
+                    
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  
+      </div>
+
+    
+
+   
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>
