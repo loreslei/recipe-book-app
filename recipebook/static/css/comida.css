@@ -16,6 +16,8 @@
 #Socorro{
     display: flex;
     justify-content: center;
+    width: 60%;
+    margin: auto;
 }
 
 #Ingredientes, #ModoPreparo{
@@ -25,6 +27,26 @@
 #Data{
     color: #999999;
     margin-bottom: 4rem;
+}
+
+#Share{
+    font-size: 42px;
+}
+
+#TextShare{
+    font-size: 28px;
+}
+
+
+
+#Position{
+    margin-top: 10rem;
+    margin-right: 3%;
+}
+
+#BtnCompartilhar{
+    cursor: pointer;
+    flex-direction: column;
 }
 
 @media(max-width:926.98px){
@@ -41,10 +63,33 @@
     }
 }
 
+@media(max-width:300.98px){
+    #TextShare{
+        visibility: hidden;
+    }
+
+    #Position{
+        margin-right: .5rem;
+    }
+}
+
 .posicaoImagem{
     display: flex;
     justify-content: center;
 }
+
+.icons{
+    padding: 20px;
+    width: fit-content;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.icons:hover{
+    background-color: #675af8;
+    color: #fafafa !important;
+}
+
 
 #Categoria{
     background-color: #675af8;

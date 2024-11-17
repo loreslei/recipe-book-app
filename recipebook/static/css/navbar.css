@@ -10,12 +10,15 @@ body{
     color: #484D50;
 }
 
+
 #OptionsMenu{
+    margin-left: 2rem !important;
     margin-right: 2rem;
 }
 
 #Navbar{
     background-color: #675af8;
+    margin: 0;
 }
 
 .animated{
@@ -30,24 +33,29 @@ body{
     background-color: #fff4;
 }
 
-
-
-.hide{
-    visibility: hidden;
+#ContainerLogo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem; 
 }
 
-#Logo{
+#BtnToggle {
+    font-size: 32px; 
+    margin-right: 1rem;
+    margin-top: .5rem; 
     color: #FDFDFD;
-    margin-left: 2rem;
+    
 }
 
-#Input input{
-    border: none;
-    outline: none;
-    color: #777777;
-    margin-left: -8rem;
-    background-color: transparent;
+#Logo {
+    color: #FDFDFD;
+    margin-left: 0; 
+    transform: translateY(-0.05rem);
+    
 }
+
+
 
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -77,6 +85,8 @@ input[type="search"]::-ms-reveal {
     padding-right: 2rem;
 }
 
+
+
 #Input button{
     border: none;
     background-color: transparent;
@@ -84,18 +94,42 @@ input[type="search"]::-ms-reveal {
 
 #Input i{
     margin-top: .4rem;
-    margin-right: -15rem;
     color: #777777;
 }
 
+#Input input{
+    border: none;
+    outline: none;
+    color: #777777;
+    background-color: transparent;
+}
+
+
+
 #Input{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 3rem;
     width: 26rem;
     border: none;
     border-radius: 60px;
+}
+
+
+#ProfileImg{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1%;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+
+#ProfileImg:hover{
+    opacity: 80%;
+    transition: all 0.2s linear;
 }
 
 
@@ -117,16 +151,9 @@ input[type="search"]::-ms-reveal {
 
     #Input input{
         width: 9rem;
-        margin-left: -5rem;
     }
 
-    #Input i{
-        margin-right: -10rem;
-    }
-
-    #Logo{
-        margin: .5rem;
-    }
+   
 }
 
 
@@ -140,14 +167,11 @@ input[type="search"]::-ms-reveal {
         width: 4rem;
     }
 
-    #Logo{
-        margin: .5rem;
-    }
 
 
 }
 
-@media(max-width:400.98px) {
+@media(max-width:420.98px) {
 
     #Input{
         width: 10rem;
@@ -155,17 +179,24 @@ input[type="search"]::-ms-reveal {
 
     #Input input{
         width: 4rem;
-        margin-left: .1rem;
-    }
-
-    #Input i{
-        margin-right: .2rem;
     }
 
 
-    #Logo{
-        margin: .5rem;
+    #BtnToggle {
+        margin-right: .5rem;
+        margin-left: -1rem;
+        
     }
+
+
+    #ProfileImg{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+
 
 
 }

@@ -20,7 +20,22 @@
 
 
 
+    <div id="Position" class="d-flex justify-content-end">
+
+      <div onclick="compartilhar()" id="BtnCompartilhar" class="d-flex align-items-center justify-content-end icons">
+        <i id="Share" class='bx bxs-share-alt h4'></i>
+        <span id="TextShare" class="text-uppercase fw-bold">Compartilhar</span>
+      </div>
+
+    </div>
+
+
+
+
     <h1 id="Header" class="display-4 text-center fw-bold text-capitalize">{{ recipe.title }}</h1>
+
+   
+    
 
     <div class="posicaoImagem">
       {% if recipe.image_path %}
@@ -58,6 +73,38 @@
         {% endfor %}
       </ol>
     </div>
+
+    
+
+    <script>
+        function compartilhar() {
+            const url = 'http://127.0.0.1:5000/recipes/view/{{ recipe.id }}'; 
+
+            if (navigator.share) {
+                navigator.share({
+                    title: '{{ recipe.title }}',
+                    url: url
+                }).then(() => {
+                    console.log('Compartilhamento bem-sucedido!');
+                }).catch((error) => {
+                    console.error('Erro ao compartilhar:', error);
+                });
+            } else {
+                copiarParaAreaDeTransferencia(url);
+                alert('O link foi copiado para a área de transferência. Você pode colá-lo para compartilhar!');
+            }
+        }
+
+        function copiarParaAreaDeTransferencia(texto) {
+            const input = document.createElement('input');
+            input.setAttribute('value', texto);
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+        }
+    </script>
+
     
     
    
