@@ -1,0 +1,76 @@
+
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resultados de Busca</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/busca.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+    <!-- FIM Navbar -->
+
+    <!-- Título da Página -->
+     <div id="TituloPag">
+         <h1 id="TituloPag" class="text-center fw-bold mt-5">Resultados para "{{ request.args.get('keyword') }}"</h1>
+     </div>
+  
+
+    <!-- Resultados da Busca -->
+    <div id="PosicaoTela" class="container mt-5">
+        {% for r in recipes %}
+
+
+        <!-- Card -->
+        <div id="Cards" class="card mb-3 floating-card" style="max-width: 540px;">
+            <div id="Card" class="row g-0">
+                <div id="ImageDiv" class="col-md-4" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'">
+                    {% if r.image_path %}
+                    <img src="{{ url_for('static', filename='uploads/' + r.image_path) }}" class="img-fluid" alt="Imagem da Receita">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/default_food.png') }}" class="img-fluid" alt="Imagem da Receita">
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body">
+                        <h5 id="Titulo" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'" class="card-title fw-bold text-capitalize text-truncate text-center">{{ r.title }}</h5>
+                        <div id="ContainerCat">
+                            <p id="Categoria" class="text-center text-truncate text-truncate">{{ r.category_name }}</p>
+                        </div>
+                        <p class="card-text text-body-secondary text-center">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
+                        <p class="card-text text-body-secondary text-center"><i>por <a href="/recipes/main_usuarios"><b style="color: #675af8;"> {{ r.author }}</b></a></i></p>
+                    </div>
+                </div>
+                <div id="ContainerIcon" class="col-md-4">
+                    <a style="all:unset;" href="TO-DO">
+
+                        <div id="IconeSalvar" class="icons text-center">
+                            <span class="icon-box">
+                                <i id="Icon" class='bx bxs-save h4'></i>
+                            </span>
+                            <p class="card-text fw-bold">SALVAR</p>
+                        </div>
+                        
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- FIM Card-->
+
+        {% endfor %}
+
+    </div>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #FDFDFD;
+    font-family: "Poppins", sans-serif;
+    color: #484D50;
+}
+
+
+#OptionsMenu{
+    margin-left: 2rem !important;
+    margin-right: 2rem;
+}
+
+#Navbar{
+    background-color: #675af8;
+    margin: 0;
+}
+
+.animated{
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+
+}
+
+.animated:hover{
+    background-color: #fff4;
+}
+
+#ContainerLogo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem; 
+}
+
+#BtnToggle {
+    font-size: 32px; 
+    margin-right: 1rem;
+    margin-top: .5rem; 
+    color: #FDFDFD;
+    
+}
+
+#Logo {
+    color: #FDFDFD;
+    margin-left: 0; 
+    transform: translateY(-0.05rem);
+    
+}
+
+
+
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+input[type="search"]::-ms-clear {
+    display: none;
+    height: 0;
+    width : 0;
+}
+
+input[type="search"]::-ms-reveal {
+    display: none;
+    height: 0;
+    width : 0;
+
+}
+
+
+#PosicaoTela{
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+
+
+#Input button{
+    border: none;
+    background-color: transparent;
+}
+
+#Input i{
+    margin-top: .4rem;
+    color: #777777;
+}
+
+#Input input{
+    border: none;
+    outline: none;
+    color: #777777;
+    background-color: transparent;
+}
+
+
+
+#Input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    width: 26rem;
+    border: none;
+    border-radius: 60px;
+}
+
+
+#ProfileImg{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1%;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+
+#ProfileImg:hover{
+    opacity: 80%;
+    transition: all 0.2s linear;
+}
+
+
+
+#Header{
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+}
+
+@media(max-width:755.98px) {
+    #Header{
+        padding-top: 8rem;
+        padding-bottom: 2rem;
+    }
+
+    #Input{
+        width: 18rem;
+    }
+
+    #Input input{
+        width: 9rem;
+    }
+
+   
+}
+
+
+@media(max-width:534.98px) {
+
+    #Input{
+        width: 14rem;
+    }
+
+    #Input input{
+        width: 4rem;
+    }
+
+
+
+}
+
+@media(max-width:420.98px) {
+
+    #Input{
+        width: 10rem;
+    }
+
+    #Input input{
+        width: 4rem;
+    }
+
+
+    #BtnToggle {
+        margin-right: .5rem;
+        margin-left: -1rem;
+        
+    }
+
+
+    #ProfileImg{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+
+
+
+}
+
+
+
