@@ -10,3 +10,9 @@ def home():
         return redirect(url_for('recipes.home'))
     else:
         return render_template('landing.html')
+
+@bp.route("/landing")
+def landing():
+    if current_user.is_authenticated:
+        return render_template('landing.html')
+    return redirect('/')

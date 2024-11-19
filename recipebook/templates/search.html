@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -14,21 +12,51 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    {% include "search_component.html" %}
-    <!-- FIM Navbar -->
 
+    {% if current_user.is_authenticated: %}
+         <!-- Navbar -->
+        {% include "search_component.html" %}
+        <!-- FIM Navbar -->
+    {% else: %}
+        {% include "search_component_not_logged.html" %}
+    {% endif %}
+   
 
 
 
     <div id="Position" class="d-flex justify-content-end">
 
-        <div onclick="" id="BtnFiltrar" class="d-flex align-items-center justify-content-end iconFilter">
+        <p>
+
+        <div type="button" id="BtnFiltrar" class="d-flex align-items-center justify-content-end iconFilter"
+        data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
           <i id="Filter" class='bx bxs-filter-alt h4'></i>
           <span id="TextFilter" class="text-uppercase fw-bold">Filtrar</span>
         </div>
+
+        </p>
   
     </div>
+
+    
+    <div id="ContainerFiltro" class="d-flex justify-content-end">
+        <div  class="collapse collapse-horizontal" id="collapseFilter">
+            <div class="d-flex justify-content-end" id="collapseFilter">
+          <div id="CardColapsado" class="card card-body">
+            <button id="BotaoColapsado" class="btn btn-outline-light">Data de Adição</button>
+            <button id="BotaoColapsado" class="btn btn-outline-light">A-Z</button>
+          </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+   
+
+
+   
 
     <!-- Título da Página -->
      <div id="TituloPag">

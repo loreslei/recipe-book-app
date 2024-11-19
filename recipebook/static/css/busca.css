@@ -62,6 +62,33 @@
     font-size: 28px;
 }
 
+#BotaoColapsado{
+    border-radius: 20px !important;
+}
+
+#CardColapsado{
+    background-color: #675af8;
+    border: none !important;
+    margin-top: 1.5rem;
+    gap: 20px;
+    width: 20%;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+}
+
+
+#ContainerFiltro{
+    margin-right: 1.5rem;
+}
+
+
+
+#Centraliza{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
 
 
 .iconFilter{
@@ -103,18 +130,22 @@
     transition: all 0.5s ease;
 }
 
+#collapseFilter{
+    width: 20rem;
+}
+
 
 #Filter{
     font-size: 42px;
 }
 
 #TextFilter{
-    font-size: 28px;
+    font-size: 22px;
 }
 
 #Position{
     margin-top: 10rem;
-    margin-right: 3%;
+    margin-right: 8rem;
 }
 
 #BtnFiltrar{
