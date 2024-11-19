@@ -10,4 +10,3 @@ def home():
         return redirect(url_for('recipes.home'))
     else:
         return render_template('landing.html')
-
