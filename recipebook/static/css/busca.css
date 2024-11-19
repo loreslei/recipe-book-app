@@ -38,12 +38,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;   
+    flex-direction: column; 
+    margin-bottom: 4rem;  
 }
 
 
 #TituloPag{
-    margin-top: 8rem;
+    margin-top: 2rem;
 }
 
 #Titulo{
@@ -144,7 +145,7 @@
 }
 
 #Position{
-    margin-top: 10rem;
+    margin-top: 8rem;
     margin-right: 8rem;
 }
 
@@ -166,15 +167,20 @@
 }
 
 @media(max-width:300.98px){
-    #TextFilter{
-        visibility: hidden;
-    }
-
+  
     #Position{
         margin-right: 0rem;
         display: flex;
         justify-content: center !important; 
     }
+
+    #ContainerFiltro{
+        margin-right: 0rem;
+        display: flex;
+        justify-content: center !important;
+    }
+
+    
 
 
 }
