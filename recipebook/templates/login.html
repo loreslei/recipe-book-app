@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <title>Login</title>
+</head>
+<body>
+    {% include "search_component.html" %}
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row border rounded-5 p-3 bg-white shadow box-area">
+
+            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #675af8;">
+                <div class="header-text pb-3">
+                    <h2 id="Texto" class="text-center fw-bold mt-5">Bem-vindo!</h2>
+                    <p id="Texto" class="text-center mb-2">
+                        Se ainda não tem uma conta. 
+                        <br>
+                        Por que não <strong>criar</strong> uma?
+                    </p>
+                </div>
+                <div class="input-group mb-5 justify-content-center">
+                    <a href="/register" class="btn btn-lg btn-outline-light w-50 fs-6 rounded-5">Cadastrar-se</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 right-box">
+                <div class="row align-items-center">
+                    <div class="header-text mb-4">
+                        <h2>Faça seu Login</h2>
+                        <div id="Linha"></div>
+                    </div>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <ul class="flashes">
+                                {% for category, message in messages %}
+                                    <li class="{{ category }}">{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+
+                    <form action="/login" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group mb-1">
+                            <input type="password" class="form-control form-control-lg bg-light fs-6" name="password" placeholder="Senha" required>
+                        </div>
+                        <div class="input-group mb-5 d-flex justify-content-between">
+                        </div>
+                        <div class="input-group mb-3 justify-content-center">
+                            <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6 colorized">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+    <title>Editando perfil de {{current_user.name}}</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+
+    <!-- Edit Recipe Form -->
+    <div class="container mt-5 pt-5">
+        <div class="box form-box">
+            <header>Editar Perfil</header>
+            <form action="/TO-DO/update/{{ TO-DO }}" method="POST" id="recipeform" enctype="multipart/form-data">
+                <div id="AlinhadorImagem" class="field input">
+                    {% if recipe.image_path %}
+                        <img id="EditarReceita" src="{{ url_for('static', filename='uploads/' + recipe.image_path) }}" alt="Imagem da receita">
+                    {% endif %}
+                    <label class="custom-file-upload colorized" for="recipe_image">Clique aqui e faça o upload de uma imagem</label>
+                    <input class="file-upload" type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
+                </div>
+
+                <!-- Nome de Usuário -->
+                <div class="field input">
+                    <label for="title">Nome de Usuário*</label>
+                    <input type="text" name="title" id="title" value="{{ recipe.title }}" required>
+                </div>
+
+                <!-- E-mail -->
+                <div class="field input">
+                    <label for="title">E-mail*</label>
+                    <input type="text" name="title" id="title" value="{{ recipe.title }}" required>
+                </div>
+
+                <!-- Senha -->
+                <div class="field input">
+                    <label for="title">Senha*</label>
+                    <input type="text" name="title" id="title" value="{{ recipe.title }}" required>
+                </div>
+
+                <!-- Confirmar Senha -->
+                <div class="field input">
+                    <label for="title">Confirmar Nova Senha*</label>
+                    <input type="text" name="title" id="title" value="{{ recipe.title }}" required>
+                </div>
+
+                
+                <!-- TODO: image upload -->
+
+                <!-- Botão de Submissão -->
+                <div class="input-group pt-3 mb-2 justify-content-center">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6 colorized">
+                        <span class="lead fw-bold text-uppercase">Confirmar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

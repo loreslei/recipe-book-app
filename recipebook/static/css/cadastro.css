@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+.file-upload {
+    display: none;
+}
+
+.colorized{
+    transition: all 0.5s linear;
+}
+
+.colorized:hover {
+    background: linear-gradient(90deg,#675af8d0, #faa7e0da) !important;
+}
+
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 20px;
+    color: #fff;
+    background: linear-gradient(90deg,#675af8, #FAA7E0);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+#EditarReceita{
+    width: 100%;
+    aspect-ratio: 16/9;
+    height: 10rem;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 1.2rem;
+    object-fit: cover;
+    background-position: center;
+}
+
+#AlinhadorImagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 25px;
+    border-radius: 20px; 
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+}
+
+.form-box {
+    width: 450px;
+    margin: 0px 10px;
+}
+
+.form-box header {
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 10px;
+}
+
+.form-box form .field {
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+.form-box form .input input,
+.form-box form .input textarea,
+.form-box form .input select {
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 5px; 
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px; 
+}
+
+.submit {
+    width: 100%;
+}
+
+.links {
+    margin-bottom: 15px;
+}
+
+#LoginBtn {
+    background: linear-gradient(90deg, #675af8, #FAA7E0);
+    border-radius: 40px; 
+    border: none;
+    color: #fdfdfd;
+}
