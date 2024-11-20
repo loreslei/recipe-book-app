@@ -24,7 +24,11 @@
 
     <!-- Saudação ao Usuário -->
     <div id="User">
-        <img id="ProfileImage" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="Imagem do Usuário">
+        {% if current_user.profile_picture %}
+            <img src="{{ url_for('static', filename='uploads/' + current_user.profile_picture) }}" alt="profile picture" width="100%" id="ProfileImage">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="profile picture" width="100%" id="ProfileImage">
+        {% endif %}
         <span class="lead display-6">Olá, <i class="fw-bold">{{current_user.name}}</i></span>
     </div>
 

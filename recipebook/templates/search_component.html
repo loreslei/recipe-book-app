@@ -56,7 +56,7 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item animated">
-              <a class="nav-link" style="color: #fdfdfd;" href="TO-DO">Editar Perfil</a>
+              <a class="nav-link" style="color: #fdfdfd;" href="/profile">Editar Perfil</a>
             </li>
             <li class="nav-item animated">
                 <a  style="color: #fdfdfd;" class="nav-link" href="/logout">Sair</a>
@@ -66,9 +66,15 @@
       </div>
 
 
-      <img id="ProfileImg" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="imagem do perfil" type="button" 
-      data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarProfile" aria-controls="offcanvasNavbarProfile" aria-label="Toggle navigation">
+      
 
+      {% if current_user.profile_picture %}
+        <img id="ProfileImg" src="{{ url_for('static', filename='uploads/' + current_user.profile_picture) }}" alt="imagem do perfil" type="button" 
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarProfile" aria-controls="offcanvasNavbarProfile" aria-label="Toggle navigation">
+      {% else %}
+        <img id="ProfileImg" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="imagem do perfil" type="button" 
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarProfile" aria-controls="offcanvasNavbarProfile" aria-label="Toggle navigation">
+      {% endif %}
 
   </div>
 
