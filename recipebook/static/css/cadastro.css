@@ -105,3 +105,8 @@ textarea {
     border: none;
     color: #fdfdfd;
 }
+
+
+.error {
+    color: red;
+}
