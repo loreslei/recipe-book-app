@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-
+    profile_picture = db.Column(db.String(255), nullable=True)
     recipes = db.relationship('Recipe', backref='user', lazy=True, passive_deletes=True)
     liked_recipes = db.relationship('Recipe', secondary=likes, backref='liked_by')
 
