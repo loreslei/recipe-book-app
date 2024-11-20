@@ -84,7 +84,6 @@ def add():
         filename = None
 
         if file and allowed_file(file.filename, ALLOWED_EXTENSIONS):
-            # TODO: add UUID to the file names to prevent duplication
             filename = str(uuid.uuid4()) + "_" + secure_filename(file.filename)
             path = os.path.join("recipebook/static/uploads", filename)
             file.save(path)
@@ -124,8 +123,6 @@ def edit(recipe_id):
         # file handling
         file = request.files['file']
         filename = None
-
-        print(file)
 
         if file and allowed_file(file.filename, ALLOWED_EXTENSIONS):
             # if the recipe already has an image
