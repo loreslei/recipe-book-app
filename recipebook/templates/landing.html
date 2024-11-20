@@ -13,15 +13,26 @@
 </head>
 <body>
 
-<!-- Navbar -->
-{% include "search_component.html" %}
+
+{% if current_user.is_authenticated: %}
+     <!-- Navbar -->
+    {% include "search_component.html" %}
+    <!-- FIM Navbar -->
+{% else: %}
+        {% include "search_component_not_logged.html" %}
+{% endif %}
+
+
 <!-- Header -->
 <h1 id="Header" class="display-4 text-center fw-bold">Bem-vindo ao F🥨</h1>
 
-<div id="CaixaBotoes">
-    <a href="/register" class="btn btn-lg fs-6">Cadastrar-se</a>
-    <a href="/login" class="btn btn-lg fs-6">Login</a>
-</div>
+{% if current_user.is_authenticated: %}
+{% else: %}
+    <div id="CaixaBotoes">
+        <a href="/register" class="btn btn-lg fs-6">Cadastrar-se</a>
+        <a href="/login" class="btn btn-lg fs-6">Login</a>
+    </div>
+{% endif %}
 
 <!-- Carrossel -->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

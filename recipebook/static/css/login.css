@@ -10,6 +10,10 @@ body{
     color: #484D50;
 }
 
+#Box{
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25) !important;
+}
+
 .colorized{
     transition: all 0.5s linear;
 }

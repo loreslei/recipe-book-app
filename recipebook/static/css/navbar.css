@@ -23,7 +23,6 @@ body{
 
 .animated{
     padding: 10px;
-    width: 100%;
     border-radius: 10px;
     transition: all 0.2s linear;
 

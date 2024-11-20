@@ -52,7 +52,7 @@
     flex-direction: column;
     padding: 25px 25px;
     border-radius: 20px; 
-    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25) !important;
 }
 
 .form-box {
