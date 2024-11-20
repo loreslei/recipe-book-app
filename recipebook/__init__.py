@@ -54,6 +54,8 @@ def create_app():
     app.register_blueprint(views.bp)
     from . import recipes
     app.register_blueprint(recipes.bp)
+    from . import profile
+    app.register_blueprint(profile.bp)
 
     return app
 
