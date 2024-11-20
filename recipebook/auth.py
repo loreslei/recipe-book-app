@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, session
 from flask_login import login_required, logout_user, current_user, login_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from .models import User
@@ -9,6 +9,7 @@ bp = Blueprint('auth', __name__)
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
+        session.pop('_flashes', None)
         return redirect(url_for('views.home'))
     if request.method == 'POST':
         email = request.form.get('email')
