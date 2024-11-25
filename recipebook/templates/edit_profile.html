@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+    <title>Editando perfil de {{current_user.name}}</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+
+    <!-- Edit Recipe Form -->
+    <div class="container mt-5 pt-5">
+        <div class="box form-box">
+            <header>Editar Perfil</header>
+            <form action="" method="POST" id="recipeform" enctype="multipart/form-data">
+                <div id="AlinhadorImagem" class="field input">
+                    {% if current_user.profile_picture %}
+                        <img style="width: 100%;
+                            aspect-ratio: 16/9;
+                            height: 10rem;
+                            border-radius: 10px;
+                            margin-top: 0.5rem;
+                            margin-bottom: 1.2rem;
+                            object-fit: cover;
+                            background-position: center;" src="{{ url_for('static', filename='uploads/' + current_user.profile_picture) }}" alt="profile picture" width="100%" id="profile_img">
+                    {% else %}
+                        <img style="width: 100%;
+                        aspect-ratio: 16/9;
+                        height: 10rem;
+                        border-radius: 10px;
+                        margin-top: 0.5rem;
+                        margin-bottom: 1.2rem;
+                        object-fit: cover;
+                        background-position: center;" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="profile picture" width="100%" id="profile_img">
+                    {% endif %}
+                    <label class="custom-file-upload colorized" for="profile_input">Clique aqui e faça o upload de uma imagem</label>
+                    <input class="file-upload" type="file" name="file" id="profile_input" accept="image/png, image/jpeg, image/jpg">
+                </div>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li class="{{ category }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                <!-- Nome de Usuário -->
+                <div class="field input">
+                    <label for="title">Nome de Usuário</label>
+                    <input type="text" name="username" id="username" value="{{ current_user.name }}">
+                </div>
+
+                <!-- E-mail -->
+                <div class="field input">
+                    <label for="title">E-mail</label>
+                    <input type="text" name="email" id="email" value="{{ current_user.email }}">
+                </div>
+                <!-- Senha -->
+                <div class="field input">
+                    <label for="title">Senha Atual</label>
+                    <input type="password" name="old_password">
+                </div>
+
+               
+                <div class="field input">
+                    <label for="title">Nova Senha</label>
+                    <input type="password" name="new_password">
+                </div>
+
+            
+
+                
+                <!-- TODO: image upload -->
+
+                <!-- Botão de Submissão -->
+                <div class="input-group pt-3 mb-2 justify-content-center">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6 colorized">
+                        <span class="lead fw-bold text-uppercase">Confirmar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script>
+        // preview da imagem na hora de fazer upload
+        let imgInp = document.getElementById('profile_input');
+        let blah = document.getElementById('profile_img')
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files;
+            if (file) {
+                blah.src = URL.createObjectURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

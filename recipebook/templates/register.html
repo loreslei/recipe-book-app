@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+    <title>Cadastro</title>
+</head>
+<body>
+    {% include "search_component_not_logged.html" %}
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="box form-box">
+            <header>Faça o Seu Cadastro</header>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            <form action="/register" method="post">
+
+                
+                <div class="field input">
+                    <label for="username">Nome de Usuário*</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+
+                <div class="field input">
+                    <label for="email">E-mail*</label>
+                    <input type="text" name="email" id="email" required>
+                </div>
+                
+                <div class="field input">
+                    <label for="password">Senha*</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password_repeat">Confirmar Senha*</label>
+                    <input type="password" name="password_repeat" id="password_repeat" required>
+                </div>
+
+                <div class="input-group pt-3 mb-2 justify-content-center">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6 colorized">
+                        <span class="lead fw-bold text-uppercase">Cadastrar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+</html>

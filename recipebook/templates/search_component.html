@@ -1,0 +1,85 @@
+{% block search %}
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+
+ <!-- navbar -->
+ <nav id="Navbar" class="navbar fixed-top">
+  
+
+        
+  <div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+
+    <div id="ContainerLogo">
+      <i id="BtnToggle" class="bx bx-menu h4 animated" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation"></i>
+      <a id="Logo" class="navbar-brand">F🥨</a>
+  </div>
+  
+
+
+      
+
+
+      <form action="/recipes/search" method="GET" id="Input" class="form-control me-2">
+    
+          <input type="search" placeholder="Buscar Receitas..." aria-label="Buscar Receitas..." required name="keyword">
+          <button type="submit"><i class='bx bx-search h4 '></i></button>
+          
+      </form>
+  
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" style="background-color: #675af8;" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" style="color: #fdfdfd;" id="offcanvasNavbarLabel">Opções de Navegação</h5>
+          <button type="button" class="btn-close bg-light"  data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item animated">
+              <a class="nav-link active" style="color: #fdfdfd;" aria-current="page" href="/home">Home</a>
+            </li>
+            <li class="nav-item animated">
+              <a class="nav-link" style="color: #fdfdfd;" href="/landing">Início</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" style="background-color: #675af8;" id="offcanvasNavbarProfile" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" style="color: #fdfdfd;" id="offcanvasNavbarLabel">Perfil</h5>
+          <button type="button" class="btn-close bg-light"  data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item animated">
+              <a class="nav-link" style="color: #fdfdfd;" href="/profile">Editar Perfil</a>
+            </li>
+            <li class="nav-item animated">
+                <a  style="color: #fdfdfd;" class="nav-link" href="/logout">Sair</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      
+
+      {% if current_user.profile_picture %}
+        <img id="ProfileImg" src="{{ url_for('static', filename='uploads/' + current_user.profile_picture) }}" alt="imagem do perfil" type="button" 
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarProfile" aria-controls="offcanvasNavbarProfile" aria-label="Toggle navigation">
+      {% else %}
+        <img id="ProfileImg" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="imagem do perfil" type="button" 
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarProfile" aria-controls="offcanvasNavbarProfile" aria-label="Toggle navigation">
+      {% endif %}
+
+  </div>
+
+      
+    </nav>
+
+
+{% endblock %}

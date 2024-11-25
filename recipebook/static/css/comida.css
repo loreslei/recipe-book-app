@@ -1,0 +1,101 @@
+#ImagemComida{
+    border: none;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 20px;
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+    margin-bottom: 6rem;   
+    object-fit: cover;  
+    background-position: center;
+}
+
+#Autor, #Categoria, #Ingredientes, #ModoPreparo{
+    margin-bottom: 2rem;
+}
+
+#Socorro{
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: auto;
+}
+
+#Ingredientes, #ModoPreparo{
+    margin-top: 4rem;
+}
+
+#Data{
+    color: #999999;
+    margin-bottom: 4rem;
+}
+
+#Share{
+    font-size: 42px;
+}
+
+#TextShare{
+    font-size: 28px;
+}
+
+
+
+#Position{
+    margin-top: 10rem;
+    margin-right: 3%;
+}
+
+#BtnCompartilhar{
+    cursor: pointer;
+    flex-direction: column;
+}
+
+@media(max-width:926.98px){
+    #ImagemComida{
+        width: 20rem;
+        height: 20rem;
+    }
+}
+
+@media(max-width:600.98px){
+    #ImagemComida{
+        width: 15rem;
+        height: 15rem;
+    }
+}
+
+@media(max-width:300.98px){
+    #TextShare{
+        visibility: hidden;
+    }
+
+    #Position{
+        margin-right: .5rem;
+    }
+}
+
+.posicaoImagem{
+    display: flex;
+    justify-content: center;
+}
+
+.icons{
+    padding: 20px;
+    width: fit-content;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.icons:hover{
+    background-color: #675af8;
+    color: #fafafa !important;
+}
+
+
+#Categoria{
+    background-color: #675af8;
+    border-radius: 40px;
+    width: fit-content;
+    color: #fdfdfd;
+    padding: 1.5rem;
+    margin: auto;
+}

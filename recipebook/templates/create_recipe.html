@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+    <title>Cadastro-Receita</title>
+</head>
+<body>
+    {% include "search_component.html" %}
+
+    <div class="container mt-5 pt-5">
+        <div class="box form-box">
+            <header>Nova Receita</header>
+            <form action="/recipes/add" method="POST" id="recipeform" enctype="multipart/form-data">
+                
+                <div class="field input">
+                    <label class="custom-file-upload colorized" for="recipe_image">Clique aqui e faça o upload de uma imagem</label>
+                    <input class="file-upload" type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
+                </div>
+                <div class="field input">
+                    <label for="title">Título*</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+
+                <div class="field input">
+                    <label for="ingredients">Ingredientes*</label>
+                    <textarea name="ingredients" id="ingredients" form="recipeform" required></textarea>
+                </div>
+                
+                <div class="field input">
+                    <label for="steps">Modo de Preparo*</label>
+                    <textarea name="steps" id="steps" form="recipeform" required></textarea>
+                </div>
+
+                <div class="field input">
+                    <label for="category">Categoria*</label>
+                    <select name="category" id="category" required>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- TODO: image upload -->
+
+                <div class="input-group pt-3 mb-2 justify-content-center">
+                    <button id="LoginBtn" type="submit" class="btn btn-lg w-100 fs-6 colorized">
+                        <span class="lead fw-bold text-uppercase">Criar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

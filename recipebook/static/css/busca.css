@@ -1,0 +1,186 @@
+#ImageDiv img{
+    width: 20rem;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 15px;
+    background-position: center;
+}
+
+#ImageDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ContainerIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#Cards{
+    padding: 1rem;
+    margin-top: 4rem;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+}
+
+
+#ContainerCat{
+    display: flex;
+    justify-content: center;
+}
+
+
+#PosicaoTela{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    margin-bottom: 4rem;  
+}
+
+
+#TituloPag{
+    margin-top: 2rem;
+}
+
+#Titulo{
+    color: #484D50;
+}
+
+#Categoria{
+    background-color: #675af8;
+    border-radius: 40px;
+    width: fit-content;
+    color: #fdfdfd;
+    padding: .2rem 1.2rem .2rem 1.2rem;
+}
+
+#Icon{
+    font-size: 28px;
+}
+
+#BotaoColapsado{
+    border-radius: 20px !important;
+}
+
+#CardColapsado{
+    background-color: #675af8;
+    border: none !important;
+    margin-top: 1.5rem;
+    gap: 20px;
+    width: 20%;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 28px 4px rgba(33, 63, 141, 0.25);
+}
+
+
+#ContainerFiltro{
+    margin-right: 1.5rem;
+}
+
+
+
+#Centraliza{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+
+.iconFilter{
+    padding: 20px;
+    width: fit-content;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.iconFilter:hover{
+    background-color: #675af8;
+    color: #fafafa !important;
+}
+
+
+.icons{
+    margin: auto;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    color: #484D50 !important;
+    transition: all 0.2s linear;
+}
+
+.icons:hover{
+    background-color: #675af8;
+    color: #fafafa !important;
+    cursor: pointer;
+}
+
+
+.floating-card:hover {
+    transform: translateY(-5px);
+    transition: all 0.5s ease;
+}
+
+.floating-card:not(:hover) {
+    transform: translateY(5px);
+    transition: all 0.5s ease;
+}
+
+#collapseFilter{
+    width: 20rem;
+}
+
+
+#Filter{
+    font-size: 42px;
+}
+
+#TextFilter{
+    font-size: 22px;
+}
+
+#Position{
+    margin-top: 8rem;
+    margin-right: 7.5rem;
+}
+
+#BtnFiltrar{
+    cursor: pointer;
+    flex-direction: column;
+}
+
+@media(max-width:767.98px){
+
+    .card-body{
+        text-align: center;
+    }
+  
+
+    #Cards{
+        width: 50%;
+    }
+}
+
+@media(max-width:300.98px){
+  
+    #Position{
+        margin-right: 0rem;
+        display: flex;
+        justify-content: center !important; 
+    }
+
+    #ContainerFiltro{
+        margin-right: 0rem;
+        display: flex;
+        justify-content: center !important;
+    }
+
+    
+
+
+}
