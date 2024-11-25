@@ -22,9 +22,23 @@
             <form action="" method="POST" id="recipeform" enctype="multipart/form-data">
                 <div id="AlinhadorImagem" class="field input">
                     {% if current_user.profile_picture %}
-                        <img src="{{ url_for('static', filename='uploads/' + current_user.profile_picture) }}" alt="profile picture" width="100%" id="profile_img">
+                        <img style="width: 100%;
+                            aspect-ratio: 16/9;
+                            height: 10rem;
+                            border-radius: 10px;
+                            margin-top: 0.5rem;
+                            margin-bottom: 1.2rem;
+                            object-fit: cover;
+                            background-position: center;" src="{{ url_for('static', filename='uploads/' + current_user.profile_picture) }}" alt="profile picture" width="100%" id="profile_img">
                     {% else %}
-                        <img src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="profile picture" width="100%" id="profile_img">
+                        <img style="width: 100%;
+                        aspect-ratio: 16/9;
+                        height: 10rem;
+                        border-radius: 10px;
+                        margin-top: 0.5rem;
+                        margin-bottom: 1.2rem;
+                        object-fit: cover;
+                        background-position: center;" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="profile picture" width="100%" id="profile_img">
                     {% endif %}
                     <label class="custom-file-upload colorized" for="profile_input">Clique aqui e faça o upload de uma imagem</label>
                     <input class="file-upload" type="file" name="file" id="profile_input" accept="image/png, image/jpeg, image/jpg">
@@ -49,19 +63,19 @@
                     <label for="title">E-mail</label>
                     <input type="text" name="email" id="email" value="{{ current_user.email }}">
                 </div>
-
-                <h4>Alterar senha</h4>
                 <!-- Senha -->
                 <div class="field input">
-                    <label for="title">Senha</label>
+                    <label for="title">Senha Atual</label>
                     <input type="password" name="old_password">
                 </div>
 
-                <!-- Confirmar Senha -->
+               
                 <div class="field input">
-                    <label for="title">Confirmar Nova Senha</label>
+                    <label for="title">Nova Senha</label>
                     <input type="password" name="new_password">
                 </div>
+
+            
 
                 
                 <!-- TODO: image upload -->

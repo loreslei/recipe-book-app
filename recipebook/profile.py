@@ -61,4 +61,6 @@ def home():
 
 
         db.session.commit()
-        return redirect(url_for('profile.home'))
+        return redirect(url_for('recipes.home'))
+        #return redirect(url_for('profile.home'))
+    
