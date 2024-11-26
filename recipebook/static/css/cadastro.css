@@ -29,6 +29,10 @@
     text-align: center;
 }
 
+.margin{
+    margin-top: 8rem !important;
+}
+
 #EditarImagem{
     width: 100%;
     aspect-ratio: 16/9;
