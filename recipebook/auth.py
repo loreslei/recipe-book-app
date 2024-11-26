@@ -1,10 +1,14 @@
+import datetime, os, uuid
 from flask import Blueprint, render_template, redirect, url_for, flash, request, session
 from flask_login import login_required, logout_user, current_user, login_user
 from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.utils import secure_filename
 from .models import User
+from .file_upload import allowed_file
 from . import db
 
 bp = Blueprint('auth', __name__)    
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -56,8 +60,20 @@ def register():
         elif password != password_repeat:
             error = "As senhas não condizem"
         
+
+        # file handling
+        file = request.files['file']
+        filename = None
+
+        if file and allowed_file(file.filename, ALLOWED_EXTENSIONS):
+            filename = str(uuid.uuid4()) + "_" + secure_filename(file.filename)
+
+            path = os.path.join("recipebook/static/uploads", filename)
+            file.save(path)
+
+
         if error is None:
-            new_user = User(name=username, email=email, password=generate_password_hash(password))
+            new_user = User(name=username, email=email, password=generate_password_hash(password), profile_picture=filename)
             db.session.add(new_user)
             db.session.commit()
 

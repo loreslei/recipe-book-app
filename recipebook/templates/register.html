@@ -27,8 +27,30 @@
                 {% endif %}
             {% endwith %}
 
-            <form action="/register" method="post">
-
+            <form action="/register" method="post" enctype="multipart/form-data">
+                <div id="AlinhadorImagem" class="field input">
+                    {% if current_user.profile_picture %}
+                        <img style="width: 100%;
+                            aspect-ratio: 16/9;
+                            height: 10rem;
+                            border-radius: 10px;
+                            margin-top: 0.5rem;
+                            margin-bottom: 1.2rem;
+                            object-fit: cover;
+                            background-position: center;" src="{{ url_for('static', filename='uploads/' + current_user.profile_picture) }}" alt="profile picture" width="100%" id="profile_img">
+                    {% else %}
+                        <img style="width: 100%;
+                        aspect-ratio: 16/9;
+                        height: 10rem;
+                        border-radius: 10px;
+                        margin-top: 0.5rem;
+                        margin-bottom: 1.2rem;
+                        object-fit: cover;
+                        background-position: center;" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="profile picture" width="100%" id="profile_img">
+                    {% endif %}
+                    <label class="custom-file-upload colorized" for="profile_input">Clique aqui e faça o upload de uma imagem</label>
+                    <input class="file-upload" type="file" name="file" id="profile_input" accept="image/png, image/jpeg, image/jpg">
+                </div>
                 
                 <div class="field input">
                     <label for="username">Nome de Usuário*</label>
@@ -61,6 +83,16 @@
 
 
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
+    <script>
+        // preview da imagem na hora de fazer upload
+        let imgInp = document.getElementById('profile_input');
+        let blah = document.getElementById('profile_img')
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files;
+            if (file) {
+                blah.src = URL.createObjectURL(file);
+            }
+        }
+    </script>
 </body>
 </html>
