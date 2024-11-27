@@ -13,7 +13,7 @@
 <body>
     {% include "search_component_not_logged.html" %}
 
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container mb-5 d-flex justify-content-center align-items-center min-vh-100 margin">
         <div class="box form-box">
             <header>Faça o Seu Cadastro</header>
 
@@ -46,7 +46,7 @@
                         margin-top: 0.5rem;
                         margin-bottom: 1.2rem;
                         object-fit: cover;
-                        background-position: center;" src="{{ url_for('static', filename='images/Elsa.jpg') }}" alt="profile picture" width="100%" id="profile_img">
+                        background-position: center;" src="{{ url_for('static', filename='images/user.webp') }}" alt="profile picture" width="100%" id="profile_img">
                     {% endif %}
                     <label class="custom-file-upload colorized" for="profile_input">Clique aqui e faça o upload de uma imagem</label>
                     <input class="file-upload" type="file" name="file" id="profile_input" accept="image/png, image/jpeg, image/jpg">
