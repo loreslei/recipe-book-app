@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodWriter</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-usuario.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    {% include "search_component.html" %}
+    <!-- FIM Navbar -->
+
+    <!-- Não precisa mais <div id="Alinhar">
+        <a id="AddReceita" class="btn fw-bold btn-lg" href="/logout">SAIR</a>
+    </div>
+    -->
+
+    <!-- Saudação ao Usuário -->
+    <div id="User">
+        {% if user.profile_picture %}
+            <img src="{{ url_for('static', filename='uploads/' + user.profile_picture) }}" alt="profile picture" width="100%" id="ProfileImage">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/user.webp') }}" alt="profile picture" width="100%" id="ProfileImage">
+        {% endif %}
+        <span class="lead display-6"><i class="fw-bold">{{user.name}}</i></span>
+    </div>
+
+    <!-- Cabeçalho -->
+    <h1 id="Header-Cadastro" class="display-4 text-center fw-bold">Receitas 🍳</h1>
+
+    <div id="Centralizar">
+
+    <!-- Lista de Receitas -->
+    <div id="PosicaoTela">
+        {% for r in recipes %}
+        <div class="card mb-3 floating-card" style="width: 14.5rem; height: 28.5rem;">
+            <div id="ContainerImg">
+                {% if r.image_path %}
+                <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + r.image_path) }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'">
+                {% else %}
+                    <img id="ImagemComida" src="{{ url_for('static', filename='images/default_food.png') }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'">
+                {% endif %}
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title fw-bold text-capitalize text-truncate" style="cursor: pointer;" onclick="window.location.href='view/{{r.id}}'">{{ r.title }}</h5>
+                <div class="classPosi">
+                    <p id="CategoriaComida">{{ r.category_name }}</p>
+                </div>
+                <p id="Data">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
+
+                <div class="classPosi">
+                    <!-- Botão Remover -->
+                    <a style="all:unset;" href="/recipes/delete/{{ r.id }}">
+                    <div class="Excluir">
+                            <span class="icon-box">
+                                <i id="Trash" class='bx bx-trash h4'></i>
+                            </span>
+                            <p id="Excluir" class="card-text fw-bold">EXCLUIR</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Botão Editar -->
+                    <a style="all:unset;" href="/recipes/update/{{ r.id }}">
+                    <div class="Editar">
+                            <span class="icon-box">
+                                <i id="Trash" class='bx bx-edit h4'></i>
+                            </span>
+                            <p id="Excluir" class="card-text fw-bold">EDITAR</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

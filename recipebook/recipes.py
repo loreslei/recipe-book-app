@@ -11,6 +11,24 @@ bp = Blueprint('recipes', __name__, url_prefix='/recipes')
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
+def get_recipes_from_user_id(user_id):
+    query = (
+        db.session.query(
+            Recipe.id,
+            Recipe.user_id,
+            Recipe.title,
+            Recipe.ingredients,
+            Recipe.steps,
+            Recipe.date_created,
+            Recipe.image_path,
+            Category.name.label("category_name")
+        )
+        .filter_by(user_id=user_id)
+        .join(Category, Recipe.category_id == Category.id)
+    )
+    recipes = query.all()
+    return recipes
+
 def get_recipes_with_category():
     query = (
         db.session.query(
@@ -56,7 +74,6 @@ def home():
     recipes = get_recipes_with_category()
     
     return render_template('home.html', recipes=recipes)
-
 
 @bp.route('/view/<int:recipe_id>', methods=['GET'])
 # TODO: if user is logged in add some stuff
