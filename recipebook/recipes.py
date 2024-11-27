@@ -11,6 +11,16 @@ bp = Blueprint('recipes', __name__, url_prefix='/recipes')
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
+def get_main_recipes():
+    recipes = (
+        db.session.query(Recipe.title, Recipe.image_path)
+        .filter(Recipe.image_path.isnot(None))
+        .limit(3)
+        .all()
+    )
+
+    return recipes
+
 def get_recipes_from_user_id(user_id):
     query = (
         db.session.query(
