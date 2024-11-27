@@ -38,29 +38,30 @@
   
     </div>
 
-    
     <div id="ContainerFiltro" class="d-flex justify-content-end">
         <div  class="collapse collapse-horizontal" id="collapseFilter">
             <div class="d-flex justify-content-end" id="collapseFilter">
-          <div id="CardColapsado" class="card card-body">
-            <button id="BotaoColapsado" class="btn btn-outline-light">Data de Adição</button>
-            <button id="BotaoColapsado" class="btn btn-outline-light">A-Z</button>
-          </div>
+        <div id="CardColapsado" class="card card-body">
+            <select name="category" id="category-filter">
+                {% for category in categories %}
+                    <option value="{{ category.name }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <button onclick="applyFilter()" id="BotaoColapsado" class="btn btn-outline-light">Aplicar filtro</button>
+        </div>
         </div>
         </div>
     </div>
 
-
     <!-- Título da Página -->
      <div id="TituloPag">
          <h1 id="TituloPag" class="text-center fw-bold mt-5">Resultados para "{{ request.args.get('keyword') }}"</h1>
+         
      </div>
   
-
     <!-- Resultados da Busca -->
     <div id="PosicaoTela" class="container mt-5">
         {% for r in recipes %}
-
 
         <!-- Card -->
         <div id="Cards" class="card mb-3 floating-card" style="max-width: 540px;">
@@ -98,12 +99,22 @@
             </div>
         </div>
         <!-- FIM Card-->
-
         {% endfor %}
 
     </div>
 
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        function applyFilter() {
+            const filterElement = document.getElementById('category-filter');
+            const selectedCategory = filterElement.value;
 
+            const url = new URL(window.location.href);
+
+            url.searchParams.set('category', selectedCategory);
+
+            window.location.href = url;
+        }
+    </script>
 </body>
 </html>

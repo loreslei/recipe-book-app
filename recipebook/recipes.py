@@ -176,7 +176,11 @@ def delete(recipe_id):
 @bp.route('/search', methods=['GET'])
 def search():
     keyword = request.args.get('keyword')
-    print(keyword)
+    if not keyword:
+        return abort(406)
+
+    category = request.args.get('category')
+
     query = (
         db.session.query(
             Recipe.id,
@@ -189,9 +193,12 @@ def search():
             Category.name.label("category_name"),
             User.name.label("author")
         )
-        .filter(Recipe.title.like(f"{keyword}%"))
         .join(User, User.id == Recipe.user_id)
         .join(Category, Recipe.category_id == Category.id)
+        .filter(Recipe.title.like(f"{keyword}%"))
     )
+
+    if category:
+        query = query.filter(Category.name.like(f"{category}%"))
     
-    return render_template('search.html', recipes=query.all())
+    return render_template('search.html', recipes=query.all(), categories=Category.query.all())
