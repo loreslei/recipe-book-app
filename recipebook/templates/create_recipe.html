@@ -15,35 +15,83 @@
 
     <div class="container mt-5 pt-5">
         <div class="box form-box">
+            {% if recipe %}
+            <header>Clonando receita</header>
+            {% else %}
             <header>Nova Receita</header>
+            {% endif %}
             <form action="/recipes/add" method="POST" id="recipeform" enctype="multipart/form-data">
                 
-                <div class="field input">
-                    <label class="custom-file-upload colorized" for="recipe_image">Clique aqui e faça o upload de uma imagem</label>
-                    <input class="file-upload" type="file" name="file" id="recipe_image" accept="image/png, image/jpeg, image/jpg">
+                <div id="AlinhadorImagem" class="field input">
+                    {% if recipe.image_path %}
+                        <img style="width: 100%;
+                        aspect-ratio: 16/9;
+                        height: 10rem;
+                        border-radius: 10px;
+                        margin-top: 0.5rem;
+                        margin-bottom: 1.2rem;
+                        object-fit: cover;
+                        background-position: center;" src="{{ url_for('static', filename='uploads/' + recipe.image_path) }}" id="recipe_image" alt="Imagem da receita">
+                        {% else %}
+                        <img style="width: 100%;
+                        aspect-ratio: 16/9;
+                        height: 10rem;
+                        border-radius: 10px;
+                        margin-top: 0.5rem;
+                        margin-bottom: 1.2rem;
+                        object-fit: cover;
+                        background-position: center; display: none;" src="" id="recipe_image" alt="Imagem da receita">
+                    {% endif %}
+                    <label class="custom-file-upload colorized" for="recipe_input">Clique aqui e faça o upload de uma imagem</label>
+                    <input class="file-upload" type="file" name="file" id="recipe_input" accept="image/png, image/jpeg, image/jpg">
                 </div>
                 <div class="field input">
                     <label for="title">Título*</label>
+                    {% if recipe %}
+                    <input type="text" value="{{ recipe.title }}" name="title" id="title" required>
+                    {% else %}
                     <input type="text" name="title" id="title" required>
+                    {% endif %}
                 </div>
 
                 <div class="field input">
                     <label for="ingredients">Ingredientes*</label>
+                    {% if recipe %}
+                    <textarea name="ingredients" id="ingredients" form="recipeform" required>{{ recipe.ingredients }}</textarea>
+                    {% else %}
                     <textarea name="ingredients" id="ingredients" form="recipeform" required></textarea>
+                    {% endif %}
                 </div>
                 
                 <div class="field input">
                     <label for="steps">Modo de Preparo*</label>
+                    {% if recipe %}
+                    <textarea name="steps" id="steps" form="recipeform" required>{{ recipe.steps }}</textarea>
+                    {% else %}
                     <textarea name="steps" id="steps" form="recipeform" required></textarea>
+                    {% endif %}
                 </div>
 
                 <div class="field input">
                     <label for="category">Categoria*</label>
+
+                    {% if recipe %}
+                    <select name="category" id="category" required>
+                        {% for category in categories %}
+                            {% if recipe.category_id == category.id %}
+                                <option value="{{ category.id }}" selected>{{ category.name }}</option>
+                            {% else %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    {% else %}
                     <select name="category" id="category" required>
                         {% for category in categories %}
                             <option value="{{ category.id }}">{{ category.name }}</option>
                         {% endfor %}
                     </select>
+                    {% endif %}
                 </div>
 
                 <!-- TODO: image upload -->
@@ -58,5 +106,55 @@
     </div>
 
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+
+        function removeUntilUnderscore(input) {
+            const underscoreIndex = input.indexOf('_');
+            return underscoreIndex !== -1 ? input.substring(underscoreIndex + 1) : input;
+        }
+
+        // Select the elements
+        const imgTag = document.getElementById('recipe_image');
+        const inputFile = document.getElementById('recipe_input');
+
+        // Function to assign image to input
+        async function assignImageToInput() {
+            try {
+                // Fetch the image
+                const response = await fetch(imgTag.src);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch the image");
+                }
+
+                // Convert the response to a Blob
+                const blob = await response.blob();
+
+                // Create a File object from the Blob
+                const file = new File([blob], `${removeUntilUnderscore("{{ recipe.image_path }}")}`, { type: blob.type });
+
+                // Create a DataTransfer object to set the file programmatically
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                inputFile.files = dataTransfer.files;
+
+                console.log("File successfully assigned to input:", inputFile.files[0]);
+            } catch (error) {
+                console.error("Error assigning image:", error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', assignImageToInput);
+
+        // preview da imagem na hora de fazer upload
+        let imgInp = document.getElementById('recipe_input');
+        let blah = document.getElementById('recipe_image');
+        imgInp.onchange = evt => {
+            blah.style.display = "initial";
+            const [file] = imgInp.files;
+            if (file) {
+                blah.src = URL.createObjectURL(file);
+            }
+        }
+    </script>
 </body>
 </html>

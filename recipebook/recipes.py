@@ -90,7 +90,16 @@ def view(recipe_id):
 def add():
     if request.method == 'GET':
         categories = Category.query.all()
-        return render_template('create_recipe.html', categories=categories)
+
+        # if the user is trying to save a recipe from another user
+        recipe_copy = request.args.get('copy_from')
+
+        if recipe_copy:
+            recipe = Recipe.query.get(int(recipe_copy))
+            print(recipe.image_path)
+            return render_template('create_recipe.html', categories=categories, recipe=recipe)
+
+        return render_template('create_recipe.html', categories=categories, recipe=None)
     else:
         title = request.form.get('title')
         ingredients = request.form.get('ingredients')
