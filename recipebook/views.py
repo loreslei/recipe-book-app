@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required, current_user
-from .models import User
-from .recipes import get_recipes_from_user_id
+from .models import User, Recipe
+from .recipes import get_recipes_from_user_id, get_main_recipes
+from . import db
 
 bp = Blueprint('views', __name__)
 
@@ -11,11 +12,11 @@ def home():
     if current_user.is_authenticated:
         return redirect(url_for('recipes.home'))
     else:
-        return render_template('landing.html')
+        return render_template('landing.html', recipes=get_main_recipes())
 
 @bp.route('/user/<int:user_id>')
 def user(user_id):
-    if user_id == current_user.id:
+    if current_user.is_authenticated and user_id == current_user.id:
         return redirect(url_for('recipes.home'))
 
     user = User.query.get(int(user_id))
@@ -26,5 +27,5 @@ def user(user_id):
 @bp.route("/landing")
 def landing():
     if current_user.is_authenticated:
-        return render_template('landing.html')
+        return render_template('landing.html', recipes=get_main_recipes())
     return redirect('/')
