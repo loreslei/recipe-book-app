@@ -81,7 +81,7 @@
                                 <p id="Categoria" class="text-center text-truncate text-truncate">{{ r.category_name }}</p>
                             </div>
                             <p class="card-text text-body-secondary text-center">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
-                            <p class="card-text text-body-secondary text-center"><i>por <a href="/users"><b style="color: #675af8;"> {{ r.author }}</b></a></i></p>
+                            <p class="card-text text-body-secondary text-center"><i>por <a href="/user/{{ r.user_id }}"><b style="color: #675af8;"> {{ r.author }}</b></a></i></p>
                         </div>
                     </div>
                     <!-- FODASE -->
