@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cook.ico') }}" type="image/x-icon">
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-usuario.css') }}">
+    <title>FoodWriter</title>
+</head>
+<body>
+
+
+{% if current_user.is_authenticated: %}
+     <!-- Navbar -->
+    {% include "search_component.html" %}
+    <!-- FIM Navbar -->
+{% else: %}
+        {% include "search_component_not_logged.html" %}
+{% endif %}
+
+
+<!-- Header -->
+<h1 id="Header" class="display-4 text-center fw-bold">Bem-vindo ao F🥨</h1>
+
+{% if current_user.is_authenticated: %}
+{% else: %}
+    <div id="CaixaBotoes">
+        <a href="/register" class="btn btn-lg fs-6">Cadastrar-se</a>
+        <a href="/login" class="btn btn-lg fs-6">Login</a>
+    </div>
+{% endif %}
+
+<!-- Carrossel -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div id="Indicadores" class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='uploads/' + recipes[0].image_path) }}" class="d-block" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>{{ recipes[0].title }}</h5>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='uploads/' + recipes[1].image_path) }}" class="d-block" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>{{ recipes[1].title }}</h5>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='uploads/' + recipes[2].image_path) }}" class="d-block" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>{{ recipes[2].title }}</h5>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>
+
