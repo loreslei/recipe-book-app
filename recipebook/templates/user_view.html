@@ -40,35 +40,38 @@
     <!-- Lista de Receitas -->
     <div id="PosicaoTela">
         {% for r in recipes %}
-        <div class="card mb-3 floating-card" style="width: 14.5rem; height: 28.5rem;">
-            <div id="ContainerImg">
-                {% if r.image_path %}
-                <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + r.image_path) }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='/recipes/view/{{r.id}}'">
-                {% else %}
-                    <img id="ImagemComida" src="{{ url_for('static', filename='images/default_food.png') }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='/recipes/view/{{r.id}}'">
-                {% endif %}
-            </div>
-            <div class="card-body text-center">
-                <h5 class="card-title fw-bold text-capitalize text-truncate" style="cursor: pointer;" onclick="window.location.href='/recipes/view/{{r.id}}'">{{ r.title }}</h5>
-                <div class="classPosi">
-                    <p id="CategoriaComida">{{ r.category_name }}</p>
+        <form action="/recipes/add" method="get">
+            <div class="card mb-3 floating-card" style="width: 14.5rem; height: 28.5rem;">
+                <div id="ContainerImg">
+                    {% if r.image_path %}
+                    <img id="ImagemComida" src="{{ url_for('static', filename='uploads/' + r.image_path) }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='/recipes/view/{{r.id}}'">
+                    {% else %}
+                        <img id="ImagemComida" src="{{ url_for('static', filename='images/default_food.png') }}" alt="Imagem da Comida" style="cursor: pointer;" onclick="window.location.href='/recipes/view/{{r.id}}'">
+                    {% endif %}
                 </div>
-                <p id="Data">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
-
-                <div class="classPosi">
-                    
-                    <!-- Botão Editar -->
-                    <a style="all:unset;" href="/recipes/update/{{ r.id }}">
-                    <div class="Editar">
-                            <span class="icon-box">
-                                <i id="Trash" class='bx bx-save h4'></i>
-                            </span>
-                            <p id="Excluir" class="card-text fw-bold">Salvar</p>
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold text-capitalize text-truncate" style="cursor: pointer;" onclick="window.location.href='/recipes/view/{{r.id}}'">{{ r.title }}</h5>
+                    <div class="classPosi">
+                        <p id="CategoriaComida">{{ r.category_name }}</p>
+                    </div>
+                    <p id="Data">{{ r.date_created.day }}/{{ r.date_created.month }}/{{ r.date_created.year }}</p>
+                    <!-- FODASE -->
+                    <input type="text" name="copy_from" value="{{ r.id }}" style="display: none;">
+                    <div class="classPosi">
+                        
+                        <!-- Botão Editar -->
+                        <div class="Editar">
+                            <button type="submit" style="all: unset;">
+                                <span class="icon-box">
+                                    <i id="Trash" class='bx bx-save h4'></i>
+                                </span>
+                                <p id="Excluir" class="card-text fw-bold">Salvar</p>
+                            </button>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
         {% endfor %}
     </div>
 
