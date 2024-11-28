@@ -23,17 +23,10 @@
     -->
 
     <!-- Saudação ao Usuário -->
-    <div id="User">
-        {% if user.profile_picture %}
-            <img src="{{ url_for('static', filename='uploads/' + user.profile_picture) }}" alt="profile picture" width="100%" id="ProfileImage">
-        {% else %}
-            <img src="{{ url_for('static', filename='images/user.webp') }}" alt="profile picture" width="100%" id="ProfileImage">
-        {% endif %}
-        <span class="lead display-6"><i class="fw-bold">{{user.name}}</i></span>
-    </div>
+    <div id="User"></div>
 
     <!-- Cabeçalho -->
-    <h1 id="Header-Cadastro" class="display-4 text-center fw-bold">Receitas 🍳</h1>
+    <h1 id="Header-Cadastro" class="display-4 text-center fw-bold text-truncate">Receitas de {{user.name}}</h1>
 
     <div id="Centralizar">
 
@@ -63,9 +56,9 @@
                         <div class="Editar">
                             <button type="submit" style="all: unset;">
                                 <span class="icon-box">
-                                    <i id="Trash" class='bx bx-save h4'></i>
+                                    <i id="Trash" class='bx bxs-save h4'></i>
                                 </span>
-                                <p id="Excluir" class="card-text fw-bold">Salvar</p>
+                                <p id="Excluir" class="card-text fw-bold">SALVAR</p>
                             </button>
                         </div>
                     </div>
